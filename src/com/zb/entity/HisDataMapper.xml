@@ -1,69 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zb.mapper.NowDataMapper">
+<mapper namespace="com.zb.mapper.HisDataMapper">
 
 
-	<resultMap type="com.zb.entity.NowData" id="NowMap">
-		<id column="sensorId" property="sensorId" />
-		<result column="gsCode" property="gsCode" />
-		<result column="sensorDeviceId" property="sensorDeviceId" />
-		<result column="sensorName" property="sensorName" />
-		<result column="sensorValue" property="sensorValue" />
+	<resultMap type="com.zb.entity.HisData" id="HisMap">
+		<id column="hisId" property="hisId" />
+		<result column="sensorId" property="sensorId" />
+		<result column="preOperation" property="preOperation" />
+		<result column="postOperation" property="postOperation" />
+		<result column="operation" property="operation" />
+		<result column="postOperationData" property="postOperationData" />
+		<result column="operatingTime" property="operatingTime" />
 		
 	</resultMap>
 
-<!-- 	获得db_nowdata中所有数据信息，分页条件查询 -->
-	<sql id="getNowData">
-		<if test="sensorId!=null and sensorId!=''">
-		  and sensorId=#{sensorId}
-		</if>
-		<if test="gsCode!=null and gsCode!=''">
-		  and gsCode=#{gsCode}
-		</if>
-		<if test="sensorDeviceId!=null and sensorDeviceId!=''">
-		  and sensorDeviceId=#{sensorDeviceId}
-		</if>
-		<if test="sensorName!=null and sensorName!=''">
-		  and sensorName=#{sensorName}
-		</if>
-		<if test="area=null and area!=''">
-		  and area=#{area}
-		</if>
-		
-	</sql>
-	<select id="getNowData" resultMap="NowMap">
-		SELECT * FROM db_nowdata where 1=1
-	 <include refid="getNowData"></include>
-	  limit #{index} ,#{size}
-	</select>
-<!-- 分页查询数据条数 -->
-	<select id="count" resultType="int">
-		SELECT count(*) FROM db_nowdata where 1=1
-	 <include refid="getNowData"></include>
-	</select>
-<!-- 根据主键sensorId查询数据 -->
-	<select id="getNowDataById" resultMap="NowMap">
-		SELECT * FROM db_nowdata where sensorId=#{sensorId}
-	</select>
-	
-	
-<!-- 增加db_nowdata表数据记录 -->
-	<insert id="add">
-	INSERT into db_nowdata(gsCode,sensorDeviceId,sensorName,area,sensorValue,updateTime) VALUES(#{gsCode},#{sensorDeviceId},#{sensorName},#{area},#{sensorValue}CURRENT_TIMESTAMP)
-	<selectKey keyProperty="sensorId" resultType="Int">
-      select LAST_INSERT_ID() as sensorId
-      </selectKey>
-	</insert>
-
-<!-- 删除db_nowdata表数据记录数据 -->
-<delete id="de">
-delete  from db_nowdata where sensorId=#{sensorId}
-</delete>
-
-<!-- 硬件部门修改db_nowdata表数据记录数据 -->
-<update id="up">
-UPDATE db_nowdata SET sensorDeviceId=#{sensorDeviceId},sensorName=#{sensorName},
-sensorValue=#{sensorValue},updateTime=(SELECT CURRENT_TIMESTAMP) where sensorId=#{updateTime}
-</update>
-
+<!-- 在表db_hisdata中增加数据 -->
+<insert id="add">
+insert into db_hisdata(sensorId,preOperation,postOperation,operation,postOperationData,operatingTime) 
+value(#{sensorId},#{preOperation},#{postOperation},#{operation},#{postOperationData},#{operatingTime})
+</insert>
 </mapper>
+

@@ -14,7 +14,7 @@ public interface NowDataBiz {
 	
 	/*根据主键sensorId查询数据*/
 
-	public List<NowData> getNowDataById(Integer sensorId);
+	public NowData getNowDataById(Integer sensorId);
 	
 	/*增加db_nowdata表数据记录*/
 	public void add(NowData n);
