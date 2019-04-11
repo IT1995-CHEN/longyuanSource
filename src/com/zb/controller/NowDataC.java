@@ -38,7 +38,7 @@ public class NowDataC {
 	/*根据主键sensorId查询数据*/
 	@ResponseBody
 	@RequestMapping("/getNowDataById")
-	public List<NowData> getNowDataById(Integer sensorId){
+	public NowData getNowDataById(Integer sensorId){
 		
 		return nowDataBiz.getNowDataById(sensorId);
 		
@@ -53,10 +53,22 @@ public class NowDataC {
 		map.put("ok", "添加成功");
 		return map; 
 	}
-	
+	/*	修改db_nowdata表数据记录*/
 	@ResponseBody
-	@RequestMapping("/user")
-	public String show(){
-		return "cn";
+	@RequestMapping("/upNowData")
+	public Map<String, String> upNowData(NowData n){
+		Map<String, String> map = new HashMap();
+		map.put("ok", "修改成功");
+		nowDataBiz.up(n);
+		return map;
+	}
+	/*	删除db_nowdata表数据记录*/
+	@ResponseBody
+	@RequestMapping("/deNowData")
+	public Map<String, String> deNowData(Integer sensorId){
+		Map<String, String> map = new HashMap();
+		map.put("ok", "删除成功");
+		nowDataBiz.de(sensorId);
+		return map;
 	}
 }

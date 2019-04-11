@@ -13,9 +13,6 @@ import org.springframework.stereotype.Service;
 import com.zb.biz.NowDataBiz;
 import com.zb.entity.HisData;
 import com.zb.entity.NowData;
-import com.zb.entity.Roleinformation;
-import com.zb.entity.Terminaldata;
-import com.zb.entity.Terminallog;
 import com.zb.mapper.HisDataMapper;
 import com.zb.mapper.NowDataMapper;
 import com.zb.util.PageUtil;
@@ -40,7 +37,7 @@ public class NowDataBizImpl  implements NowDataBiz {
 	}
 
 	@Override
-	public List<NowData> getNowDataById(Integer sensorId) {
+	public NowData getNowDataById(Integer sensorId) {
 		// TODO Auto-generated method stub
 		return nowDataMapper.getNowDataById(sensorId);
 	}
@@ -49,24 +46,38 @@ public class NowDataBizImpl  implements NowDataBiz {
 	public void add(NowData n) {
 		// TODO Auto-generated method stub
 		try {
+			nowDataMapper.add(n);
 			all(n, "insert");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		nowDataMapper.add(n);
+		
 	}
 
 	@Override
 	public void de(Integer sensorId) {
 		// TODO Auto-generated method stub
-		
+		try {
+			nowDataMapper.de(sensorId);
+			NowData n = getNowDataById(sensorId);
+			all(n, "delete");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void up(NowData n) {
 		// TODO Auto-generated method stub
-		
+		try {
+			all(n, "update");
+			nowDataMapper.up(n);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void all(NowData n, String type) throws UnsupportedEncodingException {
@@ -88,12 +99,12 @@ public class NowDataBizImpl  implements NowDataBiz {
 			his.setPreOperation(str);
 			his.setPostOperation("");
 		} else {
-			List<NowData> data = getNowDataById(n.getSensorId());
+			NowData data = getNowDataById(n.getSensorId());
 			his.setPreOperation(data.toString());
 			his.setPostOperation(str);
 		}
 		hisDataMapper.add(his);
-//		return log;
+
 	}
 
 }

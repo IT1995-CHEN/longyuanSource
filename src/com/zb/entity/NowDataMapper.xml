@@ -48,11 +48,13 @@
 	
 	
 <!-- 增加db_nowdata表数据记录 -->
-	<insert id="add">
-	INSERT into db_nowdata(gsCode,sensorDeviceId,sensorName,area,sensorValue,updateTime) VALUES(#{gsCode},#{sensorDeviceId},#{sensorName},#{area},#{sensorValue}CURRENT_TIMESTAMP)
-	<selectKey keyProperty="sensorId" resultType="Int">
-      select LAST_INSERT_ID() as sensorId
-      </selectKey>
+	<insert id="add" >
+
+     <selectKey  keyProperty="sensorId" resultType="Integer" order="AFTER">
+	select LAST_INSERT_ID()
+	</selectKey>
+	INSERT into db_nowdata(sensorId,gsCode,sensorDeviceId,sensorName,area,sensorValue,updateTime) 
+	VALUES(null,#{gsCode},#{sensorDeviceId},#{sensorName},#{area},#{sensorValue},CURRENT_TIMESTAMP)
 	</insert>
 
 <!-- 删除db_nowdata表数据记录数据 -->
@@ -63,7 +65,7 @@ delete  from db_nowdata where sensorId=#{sensorId}
 <!-- 硬件部门修改db_nowdata表数据记录数据 -->
 <update id="up">
 UPDATE db_nowdata SET sensorDeviceId=#{sensorDeviceId},sensorName=#{sensorName},
-sensorValue=#{sensorValue},updateTime=(SELECT CURRENT_TIMESTAMP) where sensorId=#{updateTime}
+sensorValue=#{sensorValue},updateTime=(SELECT CURRENT_TIMESTAMP) where sensorId=#{sensorId}
 </update>
 
 </mapper>
