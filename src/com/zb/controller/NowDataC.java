@@ -53,6 +53,7 @@ public class NowDataC {
 		map.put("ok", "添加成功");
 		return map; 
 	}
+	
 	/*	修改db_nowdata表数据记录*/
 	@ResponseBody
 	@RequestMapping("/upNowData")
@@ -62,6 +63,7 @@ public class NowDataC {
 		nowDataBiz.up(n);
 		return map;
 	}
+	
 	/*	删除db_nowdata表数据记录*/
 	@ResponseBody
 	@RequestMapping("/deNowData")

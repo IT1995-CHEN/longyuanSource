@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zb.biz.NowDataBiz;
 import com.zb.entity.HisData;
@@ -59,21 +60,22 @@ public class NowDataBizImpl  implements NowDataBiz {
 	public void de(Integer sensorId) {
 		// TODO Auto-generated method stub
 		try {
+			all(getNowDataById(sensorId), "delete");
 			nowDataMapper.de(sensorId);
-			NowData n = getNowDataById(sensorId);
-			all(n, "delete");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
+	
 
 	@Override
 	public void up(NowData n) {
 		// TODO Auto-generated method stub
 		try {
-			all(n, "update");
 			nowDataMapper.up(n);
+			all(n, "update");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

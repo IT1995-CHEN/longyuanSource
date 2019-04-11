@@ -21,13 +21,13 @@ public interface NowDataMapper {
 	
 	/*根据主键sensorId查询数据*/
 
-	public NowData getNowDataById(@Param("sensorId")Integer sensorId);
+	public NowData getNowDataById (@Param("sensorId")Integer sensorId);
 	
 	/*增加db_nowdata表数据记录*/
 	public void add(NowData n);
 	
 	/*删除db_nowdata表数据记录数据*/
-	public void de(@Param("sensorId")Integer sensorId);
+	public void de(@Param("sensorId") Integer sensorId);
 	
 	/*硬件部门修改db_nowdata表数据记录数据*/
 	public void up(NowData n);
