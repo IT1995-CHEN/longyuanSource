@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.mapper.CommodityMapper">
+
+
+	<resultMap type="com.zb.entity.Commodity" id="allMap">
+		<id column="gsCode" property="gsCode" />
+		<result column="gsImg" property="gsImg" />
+		<result column="productImg" property="productImg" />
+		<result column="productName" property="productName" />
+		<result column="productDescription" property="productDescription" />
+		<result column="productionDate" property="productionDate" />
+		<result column="createTime" property="createTime" />
+		<result column="modifyTime" property="modifyTime" />
+		
+	</resultMap>
+
+
+
+	<select id="getAll"  resultMap="allMap">
+	   SELECT * FROM db_commodity
+	</select>
+	
+	
+	
+	<sql id="getAllPage">
+		<if test="gsCode!=null and gsCode!=''">
+		  and gsCode=#{gsCode}
+		</if>
+	</sql>
+	<select id="getAllPage"  resultMap="allMap">
+	   SELECT * FROM db_commodity where 1=1
+	   <include refid="getAllPage"></include>
+	  limit #{index} ,#{size}
+	</select>
+	
+	<select id="getAllPageCount"  resultType="int">
+	   SELECT count(*) FROM db_commodity where 1=1
+	   <include refid="getAllPage"></include>
+	</select>
+</mapper>
