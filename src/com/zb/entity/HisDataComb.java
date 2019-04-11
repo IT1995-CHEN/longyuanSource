@@ -1,11 +1,9 @@
 package com.zb.entity;
 
-import sun.management.Sensor;
-
 public class HisDataComb {
 	private Integer hisId;
 	private Integer sensorId;
-	private Sensor sensor;
+	private NowData nowData;
 	private String preOperation;
 	private String postOperation;
 	private String operation;
@@ -24,11 +22,11 @@ public class HisDataComb {
 	public void setSensorId(Integer sensorId) {
 		this.sensorId = sensorId;
 	}
-	public Sensor getSensor() {
-		return sensor;
+	public NowData getNowData() {
+		return nowData;
 	}
-	public void setSensor(Sensor sensor) {
-		this.sensor = sensor;
+	public void setNowData(NowData nowData) {
+		this.nowData = nowData;
 	}
 	public String getPreOperation() {
 		return preOperation;
@@ -61,16 +59,14 @@ public class HisDataComb {
 		this.operatingTime = operatingTime;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "HisDataComb [hisId=" + hisId + ", sensorId=" + sensorId
-				+ ", sensor=" + sensor + ", preOperation=" + preOperation
+				+ ", nowData=" + nowData + ", preOperation=" + preOperation
 				+ ", postOperation=" + postOperation + ", operation="
 				+ operation + ", postOperationData=" + postOperationData
 				+ ", operatingTime=" + operatingTime + "]";
 	}
-
 	
 
 }

@@ -2,8 +2,7 @@
 <!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zb.mapper.HisDataMapper">
 
-
-	<resultMap type="com.zb.entity.HisData" id="HisMap">
+	<resultMap type="com.zb.entity.HisDataComb" id="HisDataCombMap">
 		<id column="hisId" property="hisId" />
 		<result column="sensorId" property="sensorId" />
 		<result column="preOperation" property="preOperation" />
@@ -11,7 +10,25 @@
 		<result column="operation" property="operation" />
 		<result column="postOperationData" property="postOperationData" />
 		<result column="operatingTime" property="operatingTime" />
-		
+		<association property="nowData" javaType="com.zb.entity.NowData" column="sensorId">
+			<id column="sensorId" property="sensorId" />
+			<result column="gsCode" property="gsCode" />
+			<result column="sensorDeviceId" property="sensorDeviceId" />
+			<result column="area" property="area" />
+			<result column="sensorName" property="sensorName" />
+			<result column="sensorValue" property="sensorValue" />
+		</association>
+	</resultMap>
+	
+
+	<resultMap type="com.zb.entity.HisData" id="HisDataMap">
+		<id column="hisId" property="hisId" />
+		<result column="sensorId" property="sensorId" />
+		<result column="preOperation" property="preOperation" />
+		<result column="postOperation" property="postOperation" />
+		<result column="operation" property="operation" />
+		<result column="postOperationData" property="postOperationData" />
+		<result column="operatingTime" property="operatingTime" />		
 	</resultMap>
 
 	<!-- 在表db_hisdata中增加数据 -->
@@ -19,5 +36,52 @@
 		insert into db_hisdata(sensorId,preOperation,postOperation,operation,postOperationData,operatingTime) 
 		value(#{sensorId},#{preOperation},#{postOperation},#{operation},#{postOperationData},#{operatingTime})
 	</insert>
+	
+	<!-- 删除db_hisdata表数据记录数据 -->
+	<delete id="de">
+		delete from db_hisdata where hisId=#{hisId}
+	</delete>
+	
+	<!-- 硬件部门修改db_hisdata表数据记录数据 -->
+	<update id="up">
+		update db_hisdata set 
+		sensorId=#{sensorId},preOperation=#{preOperation},postOperation=#{postOperation},operation=#{operation},postOperationData=#{postOperationData},operatingTime=now() 
+		where hisId=#{hisId}
+	</update>
+	
+	<!-- 根据主键hisId查询数据 -->
+	<select id="getHisDataCombById" resultMap="HisDataCombMap">
+		select * from db_hisdata dbhd inner join db_nowdata dbnd on dbhd.sensorId=dbnd.sensorId where dbhd.hisId=#{hisId}
+	</select>
+	
+	<!-- 根据sensorId查询数据 -->
+	<select id="getHisDataBySensorId" resultMap="HisDataCombMap">
+		select * from db_hisdata dbhd inner join db_nowdata dbnd on dbhd.sensorId=dbnd.sensorId where dbhd.sensorId=#{sensorId}
+	</select>
+	
+	<!-- 获得db_hisdata中所有数据信息，分页条件查询 -->
+	<sql id="getHisData">
+		<if test="sensorId!=null and sensorId!=''">
+		  and dbhd.sensorId=#{sensorId}
+		</if>
+		<if test="sensorName!=null and sensorName!=''">
+		  and dbnd.sensorName=#{sensorName}
+		</if>	
+		<if test="sensorDeviceId!=null and sensorDeviceId!=''">
+		  and dbnd.sensorDeviceId=#{sensorDeviceId}
+		</if>	
+	</sql>
+	
+	<select id="getAllPage" resultMap="HisDataCombMap">
+		select * from db_hisdata dbhd inner join db_nowdata dbnd on dbhd.sensorId=dbnd.sensorId  where 1=1
+		<include refid="getHisData"></include>
+	  	limit #{index} ,#{size}
+	</select>
+	
+	<!-- 分页查询数据条数 -->
+	<select id="getAllPageCount" resultType="int">
+		select count(*) from db_hisdata dbhd inner join db_nowdata dbnd on dbhd.sensorId=dbnd.sensorId where 1=1
+	 	<include refid="getHisData"></include>
+	</select>
 </mapper>
 
