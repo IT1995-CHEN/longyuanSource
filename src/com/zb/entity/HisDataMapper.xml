@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.mapper.HisDataMapper">
+
+
+	<resultMap type="com.zb.entity.HisData" id="HisMap">
+		<id column="hisId" property="hisId" />
+		<result column="sensorId" property="sensorId" />
+		<result column="preOperation" property="preOperation" />
+		<result column="postOperation" property="postOperation" />
+		<result column="operation" property="operation" />
+		<result column="postOperationData" property="postOperationData" />
+		<result column="operatingTime" property="operatingTime" />
+		
+	</resultMap>
+
+<!-- 在表db_hisdata中增加数据 -->
+<insert id="add">
+insert into db_hisdata(sensorId,preOperation,postOperation,operation,postOperationData,operatingTime) 
+value(#{sensorId},#{preOperation},#{postOperation},#{operation},#{postOperationData},#{operatingTime})
+</insert>
+</mapper>
