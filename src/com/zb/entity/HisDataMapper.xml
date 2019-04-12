@@ -34,7 +34,7 @@
 	<!-- 在表db_hisdata中增加数据 -->
 	<insert id="add">
 		insert into db_hisdata(sensorId,preOperation,postOperation,operation,postOperationData,operatingTime) 
-		value(#{sensorId},#{preOperation},#{postOperation},#{operation},#{postOperationData},#{operatingTime})
+		value(#{sensorId},#{preOperation},#{postOperation},#{operation},#{postOperationData},now())
 	</insert>
 	
 	<!-- 删除db_hisdata表数据记录数据 -->
