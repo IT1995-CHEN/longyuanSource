@@ -13,7 +13,7 @@ import com.zb.entity.HisDataComb;
 import com.zb.mapper.HisDataMapper;
 import com.zb.util.PageUtil;
 
-@Service("db_nowdata")
+@Service("db_hisdata")
 public class HisDataBizImpl implements HisDataBiz{
 	
 	@Autowired
