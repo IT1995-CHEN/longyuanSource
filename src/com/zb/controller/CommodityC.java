@@ -25,6 +25,18 @@ public List<Commodity> getAll(){
 	return commodityBiz.getAll();
 }
 
+/*产品信息唯一查询*/
+@ResponseBody
+@RequestMapping("getInfoByGs")
+public List<Commodity> getInfoByGs(Integer gsCode){
+	System.out.println('1');
+	return commodityBiz.getInfoByGs(gsCode);
+}
+
+
+
+
+
 /*分页条件查询获得商品信息*/
 @ResponseBody
 @RequestMapping("getAllCommodityByPage")

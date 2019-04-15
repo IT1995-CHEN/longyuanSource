@@ -33,6 +33,11 @@ public class CommodityBizImpl implements CommodityBiz {
 		page.setCount(count);
 		return page;
 	}
+	@Override
+	public List<Commodity> getInfoByGs(Integer gsCode) {
+		// TODO Auto-generated method stub
+		return commodityMapper.getInfoByGs(gsCode);
+	}
 
 
 	

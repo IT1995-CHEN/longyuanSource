@@ -5,13 +5,7 @@
 
 	<resultMap type="com.zb.entity.Commodity" id="allMap">
 		<id column="gsCode" property="gsCode" />
-		<result column="gsImg" property="gsImg" />
-		<result column="productImg" property="productImg" />
-		<result column="productName" property="productName" />
-		<result column="productDescription" property="productDescription" />
-		<result column="productionDate" property="productionDate" />
-		<result column="createTime" property="createTime" />
-		<result column="modifyTime" property="modifyTime" />
+
 		
 	</resultMap>
 
@@ -21,7 +15,9 @@
 	   SELECT * FROM db_commodity
 	</select>
 	
-	
+	<select id="getInfoByGs">
+	SELECT * FROM db_commodity where gsCode=#{gsCode}
+	</select>
 	
 	<sql id="getAllPage">
 		<if test="gsCode!=null and gsCode!=''">
