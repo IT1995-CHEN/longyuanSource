@@ -46,6 +46,10 @@
 	<select id="getNowDataById" resultMap="NowMap">
 		SELECT * FROM db_nowdata where sensorId=#{sensorId}
 	</select>
+	<!-- 根据主键sensorId查询数据 -->
+	<select id="getAllNowData" resultMap="NowMap">
+		SELECT * FROM db_nowdata
+	</select>
 	
 	
 <!-- 增加db_nowdata表数据记录 -->
@@ -65,8 +69,14 @@ delete  from db_nowdata where sensorId=#{sensorId}
 
 <!-- 硬件部门修改db_nowdata表数据记录数据 -->
 <update id="up">
-UPDATE db_nowdata SET sensorDeviceId=#{sensorDeviceId},sensorName=#{sensorName},
-sensorValue=#{sensorValue},updateTime=(SELECT CURRENT_TIMESTAMP) where sensorId=#{sensorId}
+UPDATE db_nowdata 
+<set>
+	<if test="sensorDeviceId!=null and sensorDeviceId != ''">sensorDeviceId=#{sensorDeviceId},</if>
+	<if test="sensorName!=null and sensorName != ''">sensorName=#{sensorName},</if>
+	<if test="sensorValue!=null and sensorValue != ''">sensorValue=#{sensorValue},</if>
+	updateTime=(SELECT CURRENT_TIMESTAMP)
+</set>  
+where sensorId=#{sensorId}
 </update>
 
 </mapper>

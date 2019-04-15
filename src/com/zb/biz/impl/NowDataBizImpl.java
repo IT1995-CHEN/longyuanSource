@@ -108,5 +108,11 @@ public class NowDataBizImpl  implements NowDataBiz {
 		hisDataMapper.add(his);
 
 	}
+	
+	/*获取db_nowdata表所有的数据记录数据*/
+	public List<NowData> getAllNowData(){
+		List<NowData> nowDatas = nowDataMapper.getAllNowData();
+		return nowDatas;
+	}
 
 }

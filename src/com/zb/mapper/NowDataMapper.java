@@ -31,5 +31,7 @@ public interface NowDataMapper {
 	
 	/*硬件部门修改db_nowdata表数据记录数据*/
 	public void up(NowData n);
-
+	
+	/*获取db_nowdata表所有的数据记录数据*/
+	public List<NowData> getAllNowData();
 }
