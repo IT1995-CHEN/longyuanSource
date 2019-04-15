@@ -4,9 +4,16 @@ import java.util.List;
 
 public class EchartDataGroup {
 	private Integer sensorId;
+	private String  sensorName;
 	private List<Double> numDataList;
 	private List<String> todayList;
 	
+	public String getSensorName() {
+		return sensorName;
+	}
+	public void setSensorName(String sensorName) {
+		this.sensorName = sensorName;
+	}
 	public Integer getSensorId() {
 		return sensorId;
 	}
