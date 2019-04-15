@@ -41,8 +41,10 @@ public class EchartDataBizImpl implements EchartDataBiz{
 			for (int i=0;i<sensorIdList.size();i++) {
 				EchartDataGroup echartDataGroup = new EchartDataGroup();
 				echartDataGroup.setSensorId(sensorIdList.get(i));
-				String sensorName=nowDataMapper.getNowDataById(i).getSensorName();
+				System.out.println(sensorIdList.get(i));
+				String sensorName=nowDataMapper.getNowDataById(sensorIdList.get(i)).getSensorName();
 				echartDataGroup.setSensorName(sensorName);
+				System.out.println(sensorName);
 				List<EchartData> echartDatas=echartDataMapper.getEchartDataBySensorId(sensorIdList.get(i));
 				List<Double> numDataList = new ArrayList<Double>();
 				List<String> todayList = new ArrayList<String>();

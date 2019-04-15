@@ -4,7 +4,6 @@
 
 	<resultMap type="com.zb.entity.EchartData" id="EchartDataMap">
 		<id column="eid" property="eid" />
-		<result column="sensorName" property="sensorName"/>
 		<result column="sensorId" property="sensorId" />
 		<result column="numData" property="numData" />
 		<result column="today" property="today" />	
@@ -12,7 +11,7 @@
 	
 	<!-- 根据主键eid查询数据 -->
 	<select id="getEchartDataByEid" resultMap="EchartDataMap">
-		select eid,sensorId,sensorName,numData,today from db_echartdata where eid=#{eid}
+		select eid,sensorId,numData,today from db_echartdata where eid=#{eid}
 	</select>
 	
 	<!-- 根据主键eid查询数据 -->
