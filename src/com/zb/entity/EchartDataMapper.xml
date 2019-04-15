@@ -15,7 +15,7 @@
 	</select>
 	
 	<!-- 根据主键eid查询数据 -->
-	<select id="getSensorId" resultMap="Integer">
+	<select id="getSensorId" resultType="java.lang.Integer">
 		select distinct sensorId from db_echartdata
 	</select>
 	

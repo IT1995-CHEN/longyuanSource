@@ -4,7 +4,7 @@ import java.util.List;
 
 public class EchartDataGroup {
 	private Integer sensorId;
-	private List<Integer> numDataList;
+	private List<Double> numDataList;
 	private List<String> todayList;
 	
 	public Integer getSensorId() {
@@ -13,10 +13,10 @@ public class EchartDataGroup {
 	public void setSensorId(Integer sensorId) {
 		this.sensorId = sensorId;
 	}
-	public List<Integer> getNumDataList() {
+	public List<Double> getNumDataList() {
 		return numDataList;
 	}
-	public void setNumDataList(List<Integer> numDataList) {
+	public void setNumDataList(List<Double> numDataList) {
 		this.numDataList = numDataList;
 	}
 	public List<String> getTodayList() {

@@ -51,7 +51,7 @@
 	
 	<!-- 根据主键hisId查询数据 -->
 	<select id="getHisDataCombById" resultMap="HisDataCombMap">
-		select dbhd.*,dbnd.sensorDeviceId,dbnd.sensorName from db_hisdata dbhd inner join db_nowdata dbnd on dbhd.sensorId=dbnd.sensorId where dbhd.hisId=#{hisId}
+		select * from db_hisdata dbhd inner join db_nowdata dbnd on dbhd.sensorId=dbnd.sensorId where dbhd.hisId=#{hisId}
 	</select>
 	
 	<!-- 根据sensorId查询数据 -->
