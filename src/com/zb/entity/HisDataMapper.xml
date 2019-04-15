@@ -83,5 +83,13 @@
 		select count(*) from db_hisdata dbhd inner join db_nowdata dbnd on dbhd.sensorId=dbnd.sensorId where 1=1
 	 	<include refid="getHisData"></include>
 	</select>
+	
+		<!-- 在表db_echartdata中定时增加数据 -->
+	<insert id="jobAddEchartData">
+		insert into db_echartdata (sensorId,numData,today) 
+		select sensorId,avg(postOperationData) as numData,DATE_FORMAT(operatingTime,'%Y-%m-%d') today from db_hisdata group by sensorId,today 
+		on duplicate key update numData = values(numData);
+	</insert>
+	
 </mapper>
 

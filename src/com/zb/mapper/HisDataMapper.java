@@ -58,8 +58,11 @@ public interface HisDataMapper {
 	 * @return	List<HisDataComb>
 	 */
 	public int getAllPageCount(@Param("sensorId")Integer sensorId,@Param("sensorName")String sensorName,@Param("sensorDeviceId")Integer sensorDeviceId);
-	
-	
+	/**
+	 * 定时任务更新电子数据
+	 * @return
+	 */
+	public int jobAddEchartData();
 }
 
 
