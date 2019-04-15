@@ -19,7 +19,11 @@ public class NowDataC {
 	@Autowired
 	private NowDataBiz nowDataBiz;
 
-	/*获得db_nowdata中所有数据信息，分页条件查询*/
+	/**
+	 * 获得db_nowdata中所有数据信息，分页条件查询
+	 * @param  sensorId;gsCode;sensorDeviceId;sensorName;area;index;size
+	 * @return PageUtil<NowData>
+	 * */
 	@ResponseBody
 	@RequestMapping("/getNowData")
 	public PageUtil<NowData> getNowData(Integer sensorId,Integer gsCode,Integer sensorDeviceId,
@@ -35,7 +39,11 @@ public class NowDataC {
 		
 	}
 	
-	/*根据主键sensorId查询数据*/
+	/**
+	 * 根据主键sensorId查询数据
+	 * @param sensorId
+	 * @return NowData
+	 * */
 	@ResponseBody
 	@RequestMapping("/getNowDataById")
 	public NowData getNowDataById(Integer sensorId){
@@ -44,7 +52,12 @@ public class NowDataC {
 		
 	}
 	
-	/*增加db_nowdata表数据记录*/
+	/**
+	 * 
+	 * 增加db_nowdata表数据记录
+	 * @param NowData
+	 * @return map.put("ok", "添加成功");
+	 * */
 	@ResponseBody
 	@RequestMapping("/addNowData")
 	public Map<String,String> add(NowData n){
@@ -54,7 +67,11 @@ public class NowDataC {
 		return map; 
 	}
 	
-	/*	修改db_nowdata表数据记录*/
+	/**	
+	 * 修改db_nowdata表数据记录
+	 * @param NowData
+	 * @return map.put("ok", "修改成功");
+	 * */
 	@ResponseBody
 	@RequestMapping("/upNowData")
 	public Map<String, String> upNowData(NowData n){
@@ -64,7 +81,11 @@ public class NowDataC {
 		return map;
 	}
 	
-	/*	删除db_nowdata表数据记录*/
+	/**
+	 * 	删除db_nowdata表数据记录
+	 * @param sensorId
+	 * @return map.put("ok", "删除成功");
+	 * */
 	@ResponseBody
 	@RequestMapping("/deNowData")
 	public Map<String, String> deNowData(Integer sensorId){

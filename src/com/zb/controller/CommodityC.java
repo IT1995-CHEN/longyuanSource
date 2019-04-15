@@ -17,7 +17,11 @@ public class CommodityC {
 @Autowired
 private CommodityBiz commodityBiz;
 
-/*获得所有商品信息*/
+/**
+ * 获得所有商品信息
+ * @param
+ * @reuturn List<Commodity>
+ * */
 @ResponseBody
 @RequestMapping("getAllCommodity")
 public List<Commodity> getAll(){
@@ -25,7 +29,11 @@ public List<Commodity> getAll(){
 	return commodityBiz.getAll();
 }
 
-/*产品信息唯一查询*/
+/**
+ * 产品信息唯一查询
+ * @param gsCode
+ * @return List<Commodity>
+ * */
 @ResponseBody
 @RequestMapping("getInfoByGs")
 public List<Commodity> getInfoByGs(Integer gsCode){
@@ -37,7 +45,11 @@ public List<Commodity> getInfoByGs(Integer gsCode){
 
 
 
-/*分页条件查询获得商品信息*/
+/** 
+ * 分页条件查询获得商品信息
+ * @param gsCode
+ * @return PageUtil<Commodity> 
+ * */
 @ResponseBody
 @RequestMapping("getAllCommodityByPage")
 public PageUtil<Commodity> getAllByPage(Integer gsCode){

@@ -9,12 +9,24 @@ import com.zb.util.PageUtil;
 public interface CommodityBiz {
 	
 	
-	/*获取所有商品信息的方法*/
+	/**
+	 * 获取所有商品信息的方法
+	 * @param
+	 * @return list
+	 */
 	public List<Commodity>  getAll();
 	
-	/*	产品信息唯一查询*/
+	/**
+	 * 	产品信息唯一查询
+	 * @param gsCode
+	 * @return list
+	 */
 	public List<Commodity> getInfoByGs(Integer gsCode);
 	
-	/*根据gsCode获取商品信息的方法及分页*/
+	/**
+	 * 根据gsCode获取商品信息的方法及分页
+	 * @param gsCode page
+	 * @return PageUtil<Commodity>
+	*/
 	public PageUtil<Commodity> getAllPage(Integer gsCode,PageUtil<Commodity> page);
 }
