@@ -15,7 +15,7 @@
 	   SELECT * FROM db_commodity
 	</select>
 	
-	<select id="getInfoByGs">
+	<select id="getInfoByGs" resultMap="allMap">
 	SELECT * FROM db_commodity where gsCode=#{gsCode}
 	</select>
 	
