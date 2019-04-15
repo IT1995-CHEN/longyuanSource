@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.mapper.EchartDataMapper">
+
+	<resultMap type="com.zb.entity.EchartData" id="EchartDataMap">
+		<id column="eid" property="eid" />
+		<result column="sensorId" property="sensorId" />
+		<result column="numData" property="numData" />
+		<result column="today" property="today" />	
+	</resultMap>
+	
+	<!-- 根据主键eid查询数据 -->
+	<select id="getEchartDataByEid" resultMap="EchartDataMap">
+		select eid,sensorId,numData,today from db_echartdata where eid=#{eid}
+	</select>
+	
+	<!-- 根据主键eid查询数据 -->
+	<select id="getSensorId" resultMap="Integer">
+		select distinct sensorId from db_echartdata
+	</select>
+	
+	<!-- 根据sensorId查询数据 -->
+	<select id="getEchartDataBySensorId" resultMap="EchartDataMap">
+		select eid,sensorId,numData,today from db_echartdata where sensorId=#{sensorId}
+	</select>
+	
+</mapper>
+
