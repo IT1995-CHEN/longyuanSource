@@ -85,9 +85,7 @@ public class HisDataC {
 	@RequestMapping("/getHisDataCombById")
 	public HisDataComb getHisDataCombById(Integer hisId){
 		HisDataComb hisDataComb =hisDataBiz.getHisDataCombById(hisId);
-		System.out.println("---------------------------------------"+hisDataComb+"-----------------------------------------");
 		return hisDataComb;
-		
 	}
 	
 	/**
@@ -99,9 +97,7 @@ public class HisDataC {
 	@RequestMapping("/getHisDataBySensorId")
 	public List<HisDataComb> getHisDataBySensorId(Integer sensorId){
 		List<HisDataComb> hisDataCombs =hisDataBiz.getHisDataBySensorId(sensorId);
-		System.out.println("============================================================================="+hisDataCombs.size()+"================================================================");
-		return hisDataCombs;
-		
+		return hisDataCombs;		
 	}
 	
 	/**
@@ -124,9 +120,7 @@ public class HisDataC {
 		if(size!=null&&!(size.equals(""))){
 			page.setSize(size);
 		}		
-		
 		PageUtil<HisDataComb> pageUtil=hisDataBiz.getAllPage(sensorId, sensorName, sensorDeviceId, page);
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+pageUtil+"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		return pageUtil;
 		
 	}

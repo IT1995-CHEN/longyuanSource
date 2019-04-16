@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zb.mapper.OperationMapper">
+
+	<resultMap type="com.zb.entity.OperationComb" id="OperationCombMap">
+		<id column="oid" property="oid" />
+		<result column="gsCode" property="gsCode" />
+		<result column="operationName" property="operationName" />
+		<result column="operationInfo" property="operationInfo" />
+		<result column="operationTime" property="operationTime" />		
+		<association property="commodity" javaType="com.zb.entity.Commodity" column="gsCode">
+			<id column="gsCode" property="gsCode" />
+			<result column="gsImg" property="gsImg" />
+			<result column="productImg" property="productImg" />
+			<result column="productName" property="productName" />
+			<result column="productDescription" property="productDescription" />
+			<result column="location" property="location" />
+			<result column="addressLongitude" property="addressLongitude" />
+			<result column="addressLatitude" property="addressLatitude" />
+			<result column="enterprise" property="enterprise" />
+			<result column="storageTem" property="storageTem" />
+			<result column="packageWay" property="packageWay" />
+			<result column="GrowthEnvir" property="GrowthEnvir" />
+			<result column="growthTime" property="growthTime" />
+			<result column="quality" property="quality" />
+			<result column="productKind" property="productKind" />
+			<result column="productionDate" property="productionDate" />
+			<result column="nutrientContent" property="nutrientContent" />
+			<result column="createTime" property="createTime" />
+			<result column="modifyTime" property="modifyTime" />
+		</association>
+	</resultMap>
+	
+
+	<resultMap type="com.zb.entity.Operation" id="OperationMap">
+		<id column="oid" property="oid" />
+		<result column="gsCode" property="gsCode" />
+		<result column="operationName" property="operationName" />
+		<result column="operationInfo" property="operationInfo" />
+		<result column="operationTime" property="operationTime" />		
+	</resultMap>
+
+	<!-- 在表db_operation中增加数据 -->
+	<insert id="add">
+		insert into db_operation(oid,gsCode,operationName,operationInfo,operationTime) 
+		value(#{oid},#{gsCode},#{operationName},#{operationInfo},now())
+	</insert>
+	
+	
+	<!-- 根据主键oid查询数据 -->
+	<select id="getOperationCombById" resultMap="OperationCombMap">
+		select * from db_operation dboa inner join db_commodity dbcm on dboa.gsCode = dbcm.gsCode where dboa.oid=#{oid}
+	</select>
+	
+	<!-- 获得db_operation中所有数据信息，分页条件查询 -->
+	<sql id="getOperation">
+		<if test="gsCode!=null and gsCode!=''">
+		  and dboa.gsCode=#{gsCode}
+		</if>
+		<if test="operationName!=null and operationName!=''">
+		  and dboa.operationName=#{operationName}
+		</if>	
+		<if test="operationTime!=null and operationTime!=''">
+		  and DATE_FORMAT(dboa.operationTime,'%Y-%m-%d')=#{operationTime}
+		</if>	
+	</sql>
+	
+		
+	<!-- 根据getOperation查询所有数据 -->
+	<select id="getAllOperationComb" resultMap="OperationCombMap">
+		select * from db_operation dboa inner join db_commodity dbcm on dboa.gsCode = dbcm.gsCode where 1=1
+		<include refid="getOperation"></include>
+	</select>
+	
+	<!-- 分页查询数据条数 -->
+	<select id="getAllPageCount" resultType="int">
+		select count(*) from db_operation dboa inner join db_commodity dbcm on dboa.gsCode = dbcm.gsCode where 1=1
+	 	<include refid="getOperation"></include>
+	</select>
+	
+	<!-- 根据getOperation分页查询数据 -->
+	<select id="getAllPage" resultMap="OperationCombMap">
+		select * from db_operation dboa inner join db_commodity dbcm on dboa.gsCode = dbcm.gsCode where 1=1
+		<include refid="getOperation"></include>
+	  	limit #{index} ,#{size}
+	</select>
+	
+
+	
+	
+</mapper>
+

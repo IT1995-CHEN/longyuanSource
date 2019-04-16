@@ -16,6 +16,11 @@ public class Commodity {
 	private String  GrowthEnvir;
 	private String  growthTime;
 	private String  quality;
+	private String  productKind;
+	private String  productionDate;
+	private String  nutrientContent;
+	private String  createTime;
+	private String  modifyTime;
 	
 	@Override
 	public String toString() {
@@ -145,11 +150,7 @@ public class Commodity {
 	public void setModifyTime(String modifyTime) {
 		this.modifyTime = modifyTime;
 	}
-	private String  productKind;
-	private String  productionDate;
-	private String  nutrientContent;
-	private String  createTime;
-	private String  modifyTime;
+
 	
 	
 }

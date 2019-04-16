@@ -42,8 +42,7 @@ public interface HisDataBiz {
 	 * @param sensorId
 	 * @param sensorName
 	 * @param sensorDeviceId
-	 * @param index
-	 * @param size
+	 * @param page
 	 * @return	List<HisDataComb>
 	 */
 	public PageUtil<HisDataComb> getAllPage(Integer sensorId,String sensorName,Integer sensorDeviceId,PageUtil<HisDataComb> page);
