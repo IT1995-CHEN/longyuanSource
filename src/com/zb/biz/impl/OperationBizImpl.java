@@ -42,7 +42,7 @@ public class OperationBizImpl implements OperationBiz {
 	 * @param operationTime
 	 * @return
 	 */
-	public List<OperationComb> getAllOperationComb(Integer gsCode,String operationName,String operationTime){
+	public List<OperationComb> getAllOperationComb(String gsCode,String operationName,String operationTime){
 		List<OperationComb> operationCombs = operationMapper.getAllOperationComb(gsCode, operationName, operationTime);
 		return operationCombs;
 	}
@@ -54,7 +54,7 @@ public class OperationBizImpl implements OperationBiz {
 	 * @param page
 	 * @return
 	 */
-	public PageUtil<OperationComb> getAllPage(Integer gsCode,String operationName,String operationTime,PageUtil<OperationComb> page){
+	public PageUtil<OperationComb> getAllPage(String gsCode,String operationName,String operationTime,PageUtil<OperationComb> page){
 		List<OperationComb> operationCombs = operationMapper.getAllPage(gsCode, operationName, operationTime, (page.getIndex()-1)*page.getSize(), page.getSize());
 		page.setPage(operationCombs);
 		int count = operationMapper.getAllPageCount(gsCode, operationName, operationTime);

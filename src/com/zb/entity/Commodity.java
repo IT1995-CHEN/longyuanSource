@@ -2,7 +2,7 @@ package com.zb.entity;
 
 public class Commodity {
 
-	private Integer gsCode;
+	private String gsCode;
 	private String  gsImg;
 	private String  productImg;
 	private String  productName;
@@ -36,10 +36,10 @@ public class Commodity {
 				+ ", nutrientContent=" + nutrientContent + ", createTime="
 				+ createTime + ", modifyTime=" + modifyTime + "]";
 	}
-	public Integer getGsCode() {
+	public String getGsCode() {
 		return gsCode;
 	}
-	public void setGsCode(Integer gsCode) {
+	public void setGsCode(String gsCode) {
 		this.gsCode = gsCode;
 	}
 	public String getGsImg() {

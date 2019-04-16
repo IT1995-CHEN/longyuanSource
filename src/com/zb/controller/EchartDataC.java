@@ -26,7 +26,6 @@ public class EchartDataC {
 	@RequestMapping("/getEchartDataById")
 	public EchartData getEchartDataById(Integer eid){
 		EchartData echartData = echartDataBiz.getEchartDataByEid(eid);
-		System.out.println("---------------------------------------"+echartData+"-----------------------------------------");
 		return echartData;
 		
 	}
@@ -40,7 +39,6 @@ public class EchartDataC {
 	@RequestMapping("/getEchartDataGroup")
 	public List<EchartDataGroup> getEchartDataGroup(){
 		List<EchartDataGroup> echartDataGroupList =echartDataBiz.getEchartDataGroup();
-		System.out.println("============================================================================="+echartDataGroupList.toString()+"================================================================");
 		return echartDataGroupList;
 		
 	}

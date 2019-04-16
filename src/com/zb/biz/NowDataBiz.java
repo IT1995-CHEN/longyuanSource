@@ -13,7 +13,7 @@ public interface NowDataBiz {
 	 * @param sensorId;gsCode;sensorDeviceId;sensorName;area;page
 	 * @return PageUtil<NowData> 
 	 */
-	public PageUtil<NowData> getNowData(Integer sensorId,Integer gsCode,Integer sensorDeviceId,
+	public PageUtil<NowData> getNowData(Integer sensorId,String gsCode,Integer sensorDeviceId,
 		String sensorName,String area,PageUtil<NowData> page);
 	
 	/**

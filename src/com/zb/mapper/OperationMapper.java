@@ -29,7 +29,7 @@ public interface OperationMapper {
 	 * @param operationTime
 	 * @return
 	 */
-	public List<OperationComb> getAllOperationComb(@Param("gsCode")Integer gsCode,@Param("operationName")String operationName,@Param("operationTime")String operationTime);
+	public List<OperationComb> getAllOperationComb(@Param("gsCode")String gsCode,@Param("operationName")String operationName,@Param("operationTime")String operationTime);
 	/**
 	 * 根据gsCode编码、操作名字 、操作时间查询的记录行数
 	 * @param gsCode
@@ -37,7 +37,7 @@ public interface OperationMapper {
 	 * @param operationTime
 	 * @return
 	 */
-	public int getAllPageCount(@Param("gsCode")Integer gsCode,@Param("operationName")String operationName,@Param("operationTime")String operationTime);
+	public int getAllPageCount(@Param("gsCode")String gsCode,@Param("operationName")String operationName,@Param("operationTime")String operationTime);
 	/**
 	 * 根据gsCode编码、操作名字 、操作时间分页查询的操作数据
 	 * @param gsCode
@@ -47,6 +47,6 @@ public interface OperationMapper {
 	 * @param size
 	 * @return
 	 */
-	public List<OperationComb> getAllPage(@Param("gsCode")Integer gsCode,@Param("operationName")String operationName,@Param("operationTime")String operationTime,@Param("index")Integer index,@Param("size")Integer size);
+	public List<OperationComb> getAllPage(@Param("gsCode")String gsCode,@Param("operationName")String operationName,@Param("operationTime")String operationTime,@Param("index")Integer index,@Param("size")Integer size);
 
 }

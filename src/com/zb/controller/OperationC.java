@@ -59,7 +59,7 @@ public class OperationC {
 	 */
 	@ResponseBody
 	@RequestMapping("/getAllOperationComb")
-	public List<OperationComb> getAllOperationComb(Integer gsCode,String operationName,String operationTime){
+	public List<OperationComb> getAllOperationComb(String gsCode,String operationName,String operationTime){
 		List<OperationComb> operationCombs = operationBiz.getAllOperationComb(gsCode, operationName, operationTime);
 		return operationCombs;
 	}
@@ -74,8 +74,8 @@ public class OperationC {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping("/getAllPage")
-	public PageUtil<OperationComb> getAllPage(Integer gsCode,String operationName,String operationTime,
+	@RequestMapping("/getAllOperationCombs")
+	public PageUtil<OperationComb> getAllOperationCombs(String gsCode,String operationName,String operationTime,
 			Integer index,Integer size){
 		PageUtil<OperationComb> page = new PageUtil<OperationComb>();
 		if(index!=null&&!(index.equals(""))){

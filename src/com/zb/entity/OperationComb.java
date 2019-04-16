@@ -6,7 +6,7 @@ package com.zb.entity;
  */
 public class OperationComb {
 	private Integer oid;
-	private Integer gsCode;
+	private String gsCode;
 	private Commodity commodity;
 	private String operationName;
 	private String operationInfo;
@@ -18,10 +18,10 @@ public class OperationComb {
 	public void setOid(Integer oid) {
 		this.oid = oid;
 	}
-	public Integer getGsCode() {
+	public String getGsCode() {
 		return gsCode;
 	}
-	public void setGsCode(Integer gsCode) {
+	public void setGsCode(String gsCode) {
 		this.gsCode = gsCode;
 	}
 	public Commodity getCommodity() {

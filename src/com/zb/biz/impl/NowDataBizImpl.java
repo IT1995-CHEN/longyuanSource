@@ -26,7 +26,7 @@ public class NowDataBizImpl  implements NowDataBiz {
 	@Autowired
 	private HisDataMapper hisDataMapper;
 	@Override
-	public PageUtil<NowData> getNowData(Integer sensorId, Integer gsCode,
+	public PageUtil<NowData> getNowData(Integer sensorId, String gsCode,
 			Integer sensorDeviceId, String sensorName, String area,
 			PageUtil<NowData> page) {
 		// TODO Auto-generated method stub

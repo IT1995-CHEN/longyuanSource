@@ -22,14 +22,14 @@ public interface CommodityMapper {
  * @param gsCode
  * @return list
  */
-	public  List<Commodity> getInfoByGs(@Param("gsCode")Integer gsCode);
+	public  List<Commodity> getInfoByGs(@Param("gsCode")String gsCode);
 	
 /**
  * 分页查询db_commodity表中数据信息，传参为gsCode
  * @param gsCode;index;size
  * @return 
  */
-	public List<Commodity> getAllPage(@Param("gsCode")Integer gsCode,@Param("index")Integer index,@Param("size")Integer size);
+	public List<Commodity> getAllPage(@Param("gsCode")String gsCode,@Param("index")Integer index,@Param("size")Integer size);
 	
 /**
  * 分页查询db_commodity表中数据信息条数，传参为gsCode
@@ -37,7 +37,7 @@ public interface CommodityMapper {
  * @return int
  */
 
-	public int getAllPageCount(@Param("gsCode")Integer gsCode);
+	public int getAllPageCount(@Param("gsCode")String gsCode);
 	
 
 }

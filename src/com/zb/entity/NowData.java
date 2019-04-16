@@ -2,7 +2,7 @@ package com.zb.entity;
 
 public class NowData {
 private Integer sensorId;
-private Integer gsCode;
+private String gsCode;
 private String sensorDeviceId;
 private String sensorName;
 private String area;
@@ -10,12 +10,13 @@ private String sensorValue;
 private String updateTime;
 
 
+
+
 @Override
 public String toString() {
-	return "NowData [sensorId=" + sensorId + ", gsCode=" + gsCode
-			+ ", sensorDeviceId=" + sensorDeviceId + ", sensorName="
-			+ sensorName + ", area=" + area + ", sensorValue=" + sensorValue
-			+ ", updateTime=" + updateTime + "]";
+	return "NowData [gsCode=" + gsCode + ", sensorDeviceId=" + sensorDeviceId
+			+ ", sensorName=" + sensorName + ", sensorValue=" + sensorValue
+			+ "]";
 }
 public Integer getSensorId() {
 	return sensorId;
@@ -23,10 +24,10 @@ public Integer getSensorId() {
 public void setSensorId(Integer sensorId) {
 	this.sensorId = sensorId;
 }
-public Integer getGsCode() {
+public String getGsCode() {
 	return gsCode;
 }
-public void setGsCode(Integer gsCode) {
+public void setGsCode(String gsCode) {
 	this.gsCode = gsCode;
 }
 public String getSensorDeviceId() {

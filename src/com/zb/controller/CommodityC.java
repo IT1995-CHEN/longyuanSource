@@ -36,7 +36,7 @@ public List<Commodity> getAll(){
  * */
 @ResponseBody
 @RequestMapping("getInfoByGs")
-public List<Commodity> getInfoByGs(Integer gsCode){
+public List<Commodity> getInfoByGs(String gsCode){
 	System.out.println('1');
 	return commodityBiz.getInfoByGs(gsCode);
 }
@@ -52,7 +52,7 @@ public List<Commodity> getInfoByGs(Integer gsCode){
  * */
 @ResponseBody
 @RequestMapping("getAllCommodityByPage")
-public PageUtil<Commodity> getAllByPage(Integer gsCode){
+public PageUtil<Commodity> getAllByPage(String gsCode){
 	PageUtil<Commodity> page=new PageUtil<Commodity>();
 //	if(index!=null&&!(index.equals(""))){
 //		page.setIndex(index);

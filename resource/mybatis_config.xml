@@ -11,5 +11,6 @@
 		<mapper resource="com/zb/entity/NowDataMapper.xml" />
 		<mapper resource="com/zb/entity/HisDataMapper.xml" />
 		<mapper resource="com/zb/entity/EchartDataMapper.xml" />
+		<mapper resource="com/zb/entity/OperationMapper.xml" />
 	</mappers>
 </configuration>

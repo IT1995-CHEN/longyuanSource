@@ -15,7 +15,7 @@ public interface NowDataMapper {
 	 * @return list
 	 * */
 	public List<NowData> getNowData(@Param("sensorId")Integer sensorId,
-			@Param("gsCode")Integer gsCode,@Param("sensorDeviceId")Integer sensorDeviceId,
+			@Param("gsCode")String gsCode,@Param("sensorDeviceId")Integer sensorDeviceId,
 			@Param("sensorName")String sensorName,@Param("area") String area,@Param("index")Integer index,@Param("size")Integer size);
 	/**
 	 * 	分页查询数据条数
@@ -23,7 +23,7 @@ public interface NowDataMapper {
 	 * @return int
 	 */
 	public int count(@Param("sensorId")Integer sensorId,
-			@Param("gsCode")Integer gsCode,@Param("sensorDeviceId")Integer sensorDeviceId,
+			@Param("gsCode")String gsCode,@Param("sensorDeviceId")Integer sensorDeviceId,
 			@Param("sensorName")String sensorName,@Param("area") String area);
 	
 	

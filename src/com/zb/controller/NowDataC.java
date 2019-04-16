@@ -26,7 +26,7 @@ public class NowDataC {
 	 * */
 	@ResponseBody
 	@RequestMapping("/getNowData")
-	public PageUtil<NowData> getNowData(Integer sensorId,Integer gsCode,Integer sensorDeviceId,
+	public PageUtil<NowData> getNowData(Integer sensorId,String gsCode,Integer sensorDeviceId,
 			String sensorName,String area,Integer index,Integer size){
 		PageUtil<NowData> page = new PageUtil<NowData>();
 		if(index!=null&&!(index.equals(""))){

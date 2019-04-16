@@ -26,7 +26,7 @@ public interface OperationBiz {
 	 * @param operationTime
 	 * @return
 	 */
-	public List<OperationComb> getAllOperationComb(Integer gsCode,String operationName,String operationTime);
+	public List<OperationComb> getAllOperationComb(String gsCode,String operationName,String operationTime);
 	/**
 	 * 根据gsCode、操作名称、操作时间分页查询操作数据
 	 * @param gsCode
@@ -35,5 +35,5 @@ public interface OperationBiz {
 	 * @param page
 	 * @return
 	 */
-	public PageUtil<OperationComb> getAllPage(Integer gsCode,String operationName,String operationTime,PageUtil<OperationComb> page);
+	public PageUtil<OperationComb> getAllPage(String gsCode,String operationName,String operationTime,PageUtil<OperationComb> page);
 }

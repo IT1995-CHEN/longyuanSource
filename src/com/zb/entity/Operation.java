@@ -6,7 +6,7 @@ package com.zb.entity;
  */
 public class Operation {
 	private Integer oid;
-	private Integer gsCode;
+	private String gsCode;
 	private String operationName;
 	private String operationInfo;
 	private String operationTime;
@@ -17,10 +17,10 @@ public class Operation {
 	public void setOid(Integer oid) {
 		this.oid = oid;
 	}
-	public Integer getGsCode() {
+	public String getGsCode() {
 		return gsCode;
 	}
-	public void setGsCode(Integer gsCode) {
+	public void setGsCode(String gsCode) {
 		this.gsCode = gsCode;
 	}
 	public String getOperationName() {

@@ -23,7 +23,7 @@ public class CommodityBizImpl implements CommodityBiz {
 		return commodityMapper.getAll();
 	}
 	@Override
-	public PageUtil<Commodity> getAllPage(Integer gsCode,
+	public PageUtil<Commodity> getAllPage(String gsCode,
 			PageUtil<Commodity> page) {
 		// TODO Auto-generated method stub
 		List<Commodity> clist = commodityMapper.getAllPage(gsCode,(page.getIndex() - 1) * page.getSize(), page.getSize());
@@ -34,7 +34,7 @@ public class CommodityBizImpl implements CommodityBiz {
 		return page;
 	}
 	@Override
-	public List<Commodity> getInfoByGs(Integer gsCode) {
+	public List<Commodity> getInfoByGs(String gsCode) {
 		// TODO Auto-generated method stub
 		return commodityMapper.getInfoByGs(gsCode);
 	}
