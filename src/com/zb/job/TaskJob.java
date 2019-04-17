@@ -18,14 +18,14 @@ public class TaskJob {
 	@Autowired
 	private HisDataMapper hisDataMapper;
 	
-	@Scheduled(cron="0 */4 * * * ?")
+	//@Scheduled(cron="0 */10 * * * ?")
 	public void jobAdd() { 
 	   int i =hisDataMapper.jobAddEchartData();
 	   System.out.println("#############################################"+i+"#######################################");
 	}
 	
 	
-	@Scheduled(cron="0 */2 * * * ?")
+	//@Scheduled(cron="0 */2 * * * ?")
 	public void jobUpdate() {
 
 		List<NowData> nowDatas = nowDataMapper.getAllNowData();
