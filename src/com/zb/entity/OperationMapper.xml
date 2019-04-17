@@ -42,8 +42,8 @@
 
 	<!-- 在表db_operation中增加数据 -->
 	<insert id="add">
-		insert into db_operation(oid,gsCode,operationName,operationInfo,operationTime) 
-		value(#{oid},#{gsCode},#{operationName},#{operationInfo},now())
+		insert into db_operation(gsCode,operationName,operationInfo,operationTime) 
+		value(#{gsCode},#{operationName},#{operationInfo},now())
 	</insert>
 	
 	

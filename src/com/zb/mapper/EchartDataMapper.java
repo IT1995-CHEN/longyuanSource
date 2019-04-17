@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.zb.entity.EchartData;
+import com.zb.entity.EchartDataComb;
 
 @Repository
 public interface EchartDataMapper {
@@ -20,6 +21,15 @@ public interface EchartDataMapper {
 	 * @return
 	 */
 	public List<Integer> getSensorId();
+	/**
+	 * 根据传感器id、电子数据日期、gsCode查询所有的电子数据
+	 * @param sensorId
+	 * @param today
+	 * @param gsCode
+	 * @return
+	 */
+	public List<EchartDataComb> getEchartDataCombBySGT(@Param("sensorId")Integer sensorId,@Param("today")String today,@Param("gsCode")String gsCode);
+	
 	/**
 	 * 根据传感器Id查询电子数据
 	 * @param sensorId

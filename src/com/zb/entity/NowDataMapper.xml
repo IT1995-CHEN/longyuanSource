@@ -10,7 +10,6 @@
 		<result column="area" property="area" />
 		<result column="sensorName" property="sensorName" />
 		<result column="sensorValue" property="sensorValue" />
-		
 	</resultMap>
 
 <!-- 	获得db_nowdata中所有数据信息，分页条件查询 -->

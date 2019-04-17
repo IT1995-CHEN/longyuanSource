@@ -14,9 +14,11 @@ public class TaskJob2 {
 	@Autowired
 	private NowDataBiz nowDataBiz;
 	
+	/**
+	 * 定时修改nowdata数据
+	 */                                                                                                                                                                                                                                                                                                                                                                        
 	//@Scheduled(cron="0 */5 * * * ?")
-	public void jobUpdate() {
-
+	public void jobUpdateNowData() {
 		List<NowData> nowDatas = nowDataBiz.getAllNowData();
 		double num = 0;
 		if (nowDatas!=null) {

@@ -2,6 +2,42 @@
 <!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zb.mapper.EchartDataMapper">
 
+	<resultMap type="com.zb.entity.EchartDataComb" id="EchartDataCombMap">
+		<id column="eid" property="eid" />
+		<result column="sensorId" property="sensorId" />
+		<result column="numData" property="numData" />
+		<result column="today" property="today" />
+		<association property="nowDataComb" javaType="com.zb.entity.NowDataComb" column="sensorId">
+			<id column="sensorId" property="sensorId" />
+			<result column="gsCode" property="gsCode" />
+			<result column="sensorDeviceId" property="sensorDeviceId" />
+			<result column="area" property="area" />
+			<result column="sensorName" property="sensorName" />
+			<result column="sensorValue" property="sensorValue" />
+				<association property="commodity" javaType="com.zb.entity.Commodity" column="gsCode">
+				<id column="gsCode" property="gsCode" />
+				<result column="gsImg" property="gsImg" />
+				<result column="productImg" property="productImg" />
+				<result column="productName" property="productName" />
+				<result column="productDescription" property="productDescription" />
+				<result column="location" property="location" />
+				<result column="addressLongitude" property="addressLongitude" />
+				<result column="addressLatitude" property="addressLatitude" />
+				<result column="enterprise" property="enterprise" />
+				<result column="storageTem" property="storageTem" />
+				<result column="packageWay" property="packageWay" />
+				<result column="GrowthEnvir" property="GrowthEnvir" />
+				<result column="growthTime" property="growthTime" />
+				<result column="quality" property="quality" />
+				<result column="productKind" property="productKind" />
+				<result column="productionDate" property="productionDate" />
+				<result column="nutrientContent" property="nutrientContent" />
+				<result column="createTime" property="createTime" />
+				<result column="modifyTime" property="modifyTime" />
+			</association>
+		</association>	
+	</resultMap>
+
 	<resultMap type="com.zb.entity.EchartData" id="EchartDataMap">
 		<id column="eid" property="eid" />
 		<result column="sensorId" property="sensorId" />
@@ -9,12 +45,13 @@
 		<result column="today" property="today" />	
 	</resultMap>
 	
+	
 	<!-- 根据主键eid查询数据 -->
 	<select id="getEchartDataByEid" resultMap="EchartDataMap">
 		select eid,sensorId,numData,today from db_echartdata where eid=#{eid}
 	</select>
 	
-	<!-- 根据主键eid查询数据 -->
+	<!-- 获取到所有传感器的编号 -->
 	<select id="getSensorId" resultType="java.lang.Integer">
 		select distinct sensorId from db_echartdata
 	</select>
@@ -22,6 +59,26 @@
 	<!-- 根据sensorId查询数据 -->
 	<select id="getEchartDataBySensorId" resultMap="EchartDataMap">
 		select eid,sensorId,numData,today from db_echartdata where sensorId=#{sensorId}
+	</select>
+	
+	<!-- 获得db_echartdata中所有数据信息，分页条件查询 -->
+	<sql id="getEchartData">
+		<if test="sensorId!=null and sensorId!=''">
+		  and e.sensorId=#{sensorId}
+		</if>
+		<if test="today!=null and today!=''">
+		  and e.today=#{today}
+		</if>	
+		<if test="gsCode!=null and gsCode!=''">
+		  and c.gsCode=#{gsCode}
+		</if>	
+	</sql>
+	
+	<select id="getEchartDataCombBySGT" resultMap="EchartDataCombMap">
+		select * from db_echartdata e,db_nowdata n,db_commodity c
+		where e.sensorId = n.sensorId and n.gsCode = c.gsCode		
+		<include refid="getEchartData"></include>
+
 	</select>
 	
 </mapper>

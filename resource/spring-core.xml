@@ -87,12 +87,13 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="myprint" />
 	</aop:config>
 	
-	<!--  
+	<!-- 
  	<task:scheduled-tasks>   
-        <task:scheduled ref="TaskJob" method="jobAdd" cron="0 50 10 * * ?"/> 
-        <task:scheduled ref="TaskJob2" method="jobUpdate" cron="0 40 10 * * ?"/>   
+        <task:scheduled ref="TaskJob" method="jobAddEchartData" cron="0 09 14 * * ?"/> 
+        <task:scheduled ref="TaskJob" method="jobAddOperation" cron="0 06 14 * * ?"/> 
+        <task:scheduled ref="TaskJob2" method="jobUpdateNowData" cron="0 03 14 * * ?"/>   
 	</task:scheduled-tasks>  
-	-->
+	 -->
 
 	
 

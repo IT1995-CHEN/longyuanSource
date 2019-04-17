@@ -5,9 +5,16 @@ import java.util.List;
 public class EchartDataGroup {
 	private Integer sensorId;
 	private String  sensorName;
+	private String productName;
 	private List<Double> numDataList;
 	private List<String> todayList;
 	
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 	public String getSensorName() {
 		return sensorName;
 	}
@@ -32,12 +39,15 @@ public class EchartDataGroup {
 	public void setTodayList(List<String> todayList) {
 		this.todayList = todayList;
 	}
-	
 	@Override
 	public String toString() {
-		return "EchartDataGroup [sensorId=" + sensorId + ", numDataList="
-				+ numDataList + ", todayList=" + todayList + "]";
+		return "EchartDataGroup [sensorId=" + sensorId + ", sensorName="
+				+ sensorName + ", productName=" + productName
+				+ ", numDataList=" + numDataList + ", todayList=" + todayList
+				+ "]";
 	}
+	
+	
 
 	
 }
