@@ -40,21 +40,60 @@ public class EchartDataBizImpl implements EchartDataBiz{
 	 * @param sensorId
 	 * @return
 	 */
-	public List<EchartData> getEchartDataBySensorId(Integer sensorId){
-		List<EchartData> echartDatas = echartDataMapper.getEchartDataBySensorId(sensorId);
+	public List<EchartData> getEchartDataBySensorId(Integer sensorId,String beginTime,String endTime){
+		List<EchartData> echartDatas = echartDataMapper.getEchartDataBySensorId(sensorId, beginTime, endTime);
 		return echartDatas;
 	}
-	
 	/**
-	 * 根据传感器id、电子数据日期、gsCode查询所有的电子数据
+	 * 根据传感器id、电子数据开始日期、电子数据结束时间、传感器名称、gsCode查询所有的电子数据
 	 * @param sensorId
-	 * @param today
+	 * @param beginTime
+	 * @param endTime
+	 * @param sensorName
 	 * @param gsCode
 	 * @return
 	 */
-	public List<EchartDataComb> getEchartDataCombBySGT(Integer sensorId,String today,String gsCode){
-		List<EchartDataComb> echartDataCombs = echartDataMapper.getEchartDataCombBySGT(sensorId, today, gsCode);
-		return echartDataCombs;
+	public List<EchartDataGroup> getEchartDataGroupBySGT(Integer sensorId,String beginTime,String endTime,String sensorName,String gsCode){
+		List<EchartDataComb> echartDataCombs = echartDataMapper.getEchartDataCombBySGT(sensorId, beginTime, endTime, sensorName, gsCode);
+		List<EchartDataGroup> echartDataGroupList = new ArrayList<EchartDataGroup>();
+
+		if(echartDataCombs.size()>0){
+			for (int i=0;i<echartDataCombs.size();i++) {
+				EchartDataGroup echartDataGroup = new EchartDataGroup();
+				List<EchartData> echartDatas=echartDataMapper.getEchartDataBySensorId(echartDataCombs.get(i).getSensorId(),beginTime,endTime);
+				echartDataGroup.setSensorId(echartDataCombs.get(i).getSensorId());
+				echartDataGroup.setSensorName(echartDataCombs.get(i).getNowDataComb().getSensorName());
+				echartDataGroup.setProductName(echartDataCombs.get(i).getNowDataComb().getCommodityLess().getProductName());
+				List<Double> numDataList = new ArrayList<Double>();
+				List<String> todayList = new ArrayList<String>();
+				
+				for (int j=0;j<echartDatas.size();j++) {
+					numDataList.add(Double.valueOf(echartDatas.get(j).getNumData()));
+					todayList.add(echartDatas.get(j).getToday());
+					System.out.println();
+					System.out.println(Double.valueOf(echartDatas.get(j).getNumData()));
+					System.out.println(echartDatas.get(j).getToday());
+					System.out.println();
+				}
+				
+				echartDataGroup.setNumDataList(numDataList);
+				echartDataGroup.setTodayList(todayList);
+				System.out.println("("+echartDataGroup+")");
+				echartDataGroupList.add(echartDataGroup);
+			}
+			
+			List<EchartDataGroup> echartDataGroups = new ArrayList<EchartDataGroup>();
+			for (int i=0;i<echartDataGroupList.size();i++) {
+				if(!echartDataGroups.contains(echartDataGroupList.get(i))){
+					echartDataGroups.add(echartDataGroupList.get(i));
+				}
+			}
+			
+			return echartDataGroups;
+			
+		}
+				
+		return null;
 	}
 	/**
 	 * 获取根据传感器id分组后的数据
@@ -81,7 +120,7 @@ public class EchartDataBizImpl implements EchartDataBiz{
 				}
 				echartDataGroup.setProductName(commodity.getProductName());
 				System.out.println(commodity.getProductName());
-				List<EchartData> echartDatas=echartDataMapper.getEchartDataBySensorId(sensorIdList.get(i));
+				List<EchartData> echartDatas=echartDataMapper.getEchartDataBySensorId(sensorIdList.get(i),null,null);
 				List<Double> numDataList = new ArrayList<Double>();
 				List<String> todayList = new ArrayList<String>();
 				for (int j=0;j<echartDatas.size();j++) {
@@ -92,7 +131,8 @@ public class EchartDataBizImpl implements EchartDataBiz{
 				echartDataGroup.setNumDataList(numDataList);
 				echartDataGroup.setTodayList(todayList);
 				echartDataGroupList.add(echartDataGroup);	
-			}				
+			}
+			
 			return echartDataGroupList;
 			}
 

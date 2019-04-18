@@ -8,18 +8,18 @@
 		<result column="numData" property="numData" />
 		<result column="today" property="today" />
 		<association property="nowDataComb" javaType="com.zb.entity.NowDataComb" column="sensorId">
-			<id column="sensorId" property="sensorId" />
+<!-- 			<id column="sensorId" property="sensorId" />
 			<result column="gsCode" property="gsCode" />
 			<result column="sensorDeviceId" property="sensorDeviceId" />
-			<result column="area" property="area" />
+			<result column="area" property="area" /> -->
 			<result column="sensorName" property="sensorName" />
-			<result column="sensorValue" property="sensorValue" />
-				<association property="commodity" javaType="com.zb.entity.Commodity" column="gsCode">
-				<id column="gsCode" property="gsCode" />
+<!-- 			<result column="sensorValue" property="sensorValue" /> -->
+				<association property="commodityLess" javaType="com.zb.entity.CommodityLess" column="gsCode">
+<!-- 				<id column="gsCode" property="gsCode" />
 				<result column="gsImg" property="gsImg" />
-				<result column="productImg" property="productImg" />
+				<result column="productImg" property="productImg" /> -->
 				<result column="productName" property="productName" />
-				<result column="productDescription" property="productDescription" />
+<!-- 				<result column="productDescription" property="productDescription" />
 				<result column="location" property="location" />
 				<result column="addressLongitude" property="addressLongitude" />
 				<result column="addressLatitude" property="addressLatitude" />
@@ -33,7 +33,7 @@
 				<result column="productionDate" property="productionDate" />
 				<result column="nutrientContent" property="nutrientContent" />
 				<result column="createTime" property="createTime" />
-				<result column="modifyTime" property="modifyTime" />
+				<result column="modifyTime" property="modifyTime" /> -->
 			</association>
 		</association>	
 	</resultMap>
@@ -58,7 +58,18 @@
 	
 	<!-- 根据sensorId查询数据 -->
 	<select id="getEchartDataBySensorId" resultMap="EchartDataMap">
-		select eid,sensorId,numData,today from db_echartdata where sensorId=#{sensorId}
+		select eid,sensorId,numData,today from db_echartdata e
+		<where>
+			<if test="sensorId!=null and sensorId!=''">
+		  		e.sensorId=#{sensorId}
+			</if>
+			<if test="beginTime!=null and beginTime!=''">
+		  		and e.today&gt;=#{beginTime}
+			</if>	
+			<if test="endTime!=null and endTime!=''">
+		  		and e.today&lt;=#{endTime}
+			</if>
+		</where>
 	</select>
 	
 	<!-- 获得db_echartdata中所有数据信息，分页条件查询 -->
@@ -66,8 +77,14 @@
 		<if test="sensorId!=null and sensorId!=''">
 		  and e.sensorId=#{sensorId}
 		</if>
-		<if test="today!=null and today!=''">
-		  and e.today=#{today}
+		<if test="beginTime!=null and beginTime!=''">
+		  and e.today&gt;=#{beginTime}
+		</if>	
+		<if test="endTime!=null and endTime!=''">
+		  and e.today&lt;=#{endTime}
+		</if>
+		<if test="sensorName!=null and sensorName!=''">
+		  and n.sensorName=#{sensorName}
 		</if>	
 		<if test="gsCode!=null and gsCode!=''">
 		  and c.gsCode=#{gsCode}

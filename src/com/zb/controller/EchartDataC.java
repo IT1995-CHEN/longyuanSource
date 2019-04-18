@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zb.biz.EchartDataBiz;
 import com.zb.entity.EchartData;
-import com.zb.entity.EchartDataComb;
 import com.zb.entity.EchartDataGroup;
 
 @Controller
@@ -38,8 +37,8 @@ public class EchartDataC {
 	 */
 	@ResponseBody
 	@RequestMapping("/getEchartDataBySensorId")
-	public List<EchartData> getEchartDataBySensorId(Integer sensorId){
-		List<EchartData> echartDatas = echartDataBiz.getEchartDataBySensorId(sensorId);
+	public List<EchartData> getEchartDataBySensorId(Integer sensorId,String beginTime,String endTime){
+		List<EchartData> echartDatas = echartDataBiz.getEchartDataBySensorId(sensorId, beginTime, endTime);
 		return echartDatas;
 	}
 	/**
@@ -50,10 +49,10 @@ public class EchartDataC {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping("/getEchartDataCombBySGT")
-	public List<EchartDataComb> getEchartDataCombBySGT(Integer sensorId,String today,String gsCode){
-		List<EchartDataComb> echartDataCombs = echartDataBiz.getEchartDataCombBySGT(sensorId, today, gsCode);
-		return echartDataCombs;
+	@RequestMapping("/getEchartDataGroupBySGT")
+	public List<EchartDataGroup> getEchartDataCombBySGT(Integer sensorId,String beginTime,String endTime,String sensorName,String gsCode){
+		List<EchartDataGroup> echartDataGroups = echartDataBiz.getEchartDataGroupBySGT(sensorId, beginTime, endTime, sensorName, gsCode);
+		return echartDataGroups;
 	}
 	/**
 	 * 获得根据传感器编号分组后的数据

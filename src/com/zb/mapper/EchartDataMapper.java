@@ -22,20 +22,23 @@ public interface EchartDataMapper {
 	 */
 	public List<Integer> getSensorId();
 	/**
-	 * 根据传感器id、电子数据日期、gsCode查询所有的电子数据
+	 * 根据传感器id、电子数据开始日期、电子数据结束时间、传感器名称、gsCode查询所有的电子数据
 	 * @param sensorId
-	 * @param today
+	 * @param beginTime
+	 * @param endTime
+	 * @param sensorName
 	 * @param gsCode
 	 * @return
 	 */
-	public List<EchartDataComb> getEchartDataCombBySGT(@Param("sensorId")Integer sensorId,@Param("today")String today,@Param("gsCode")String gsCode);
-	
+	public List<EchartDataComb> getEchartDataCombBySGT(@Param("sensorId")Integer sensorId,@Param("beginTime")String beginTime,@Param("endTime")String endTime,@Param("sensorName")String sensorName,@Param("gsCode")String gsCode);
 	/**
-	 * 根据传感器Id查询电子数据
+	 * 根据传感器Id、开始时间、结束 时间查询电子数据
 	 * @param sensorId
+	 * @param beginTime
+	 * @param endTime
 	 * @return
 	 */
-	public List<EchartData> getEchartDataBySensorId(@Param("sensorId")Integer sensorId);
+	public List<EchartData> getEchartDataBySensorId(@Param("sensorId")Integer sensorId,@Param("beginTime")String beginTime,@Param("endTime")String endTime);
 
 	
 }

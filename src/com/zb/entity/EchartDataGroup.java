@@ -10,7 +10,7 @@ public class EchartDataGroup {
 	private List<String> todayList;
 	
 	public String getProductName() {
-		return productName;
+		return productName; 
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
@@ -45,6 +45,58 @@ public class EchartDataGroup {
 				+ sensorName + ", productName=" + productName
 				+ ", numDataList=" + numDataList + ", todayList=" + todayList
 				+ "]";
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((numDataList == null) ? 0 : numDataList.hashCode());
+		result = prime * result
+				+ ((productName == null) ? 0 : productName.hashCode());
+		result = prime * result
+				+ ((sensorId == null) ? 0 : sensorId.hashCode());
+		result = prime * result
+				+ ((sensorName == null) ? 0 : sensorName.hashCode());
+		result = prime * result
+				+ ((todayList == null) ? 0 : todayList.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EchartDataGroup other = (EchartDataGroup) obj;
+		if (numDataList == null) {
+			if (other.numDataList != null)
+				return false;
+		} else if (!numDataList.equals(other.numDataList))
+			return false;
+		if (productName == null) {
+			if (other.productName != null)
+				return false;
+		} else if (!productName.equals(other.productName))
+			return false;
+		if (sensorId == null) {
+			if (other.sensorId != null)
+				return false;
+		} else if (!sensorId.equals(other.sensorId))
+			return false;
+		if (sensorName == null) {
+			if (other.sensorName != null)
+				return false;
+		} else if (!sensorName.equals(other.sensorName))
+			return false;
+		if (todayList == null) {
+			if (other.todayList != null)
+				return false;
+		} else if (!todayList.equals(other.todayList))
+			return false;
+		return true;
 	}
 	
 	

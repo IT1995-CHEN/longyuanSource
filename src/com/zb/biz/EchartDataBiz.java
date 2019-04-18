@@ -14,19 +14,23 @@ public interface EchartDataBiz {
 	 */
 	public EchartData getEchartDataByEid(Integer eid);
 	/**
-	 * 根据电子数据的传感器id查询电子数据
+	 * 根据传感器Id、开始时间、结束 时间查询电子数据
 	 * @param sensorId
+	 * @param beginTime
+	 * @param endTime
 	 * @return
 	 */
-	public List<EchartData> getEchartDataBySensorId(Integer sensorId);
+	public List<EchartData> getEchartDataBySensorId(Integer sensorId,String beginTime,String endTime);
 	/**
-	 * 根据传感器id、电子数据日期、gsCode查询所有的电子数据
+	 * 根据传感器id、电子数据开始日期、电子数据结束时间、传感器名称、gsCode查询所有的电子数据
 	 * @param sensorId
-	 * @param today
+	 * @param beginTime
+	 * @param endTime
+	 * @param sensorName
 	 * @param gsCode
 	 * @return
 	 */
-	public List<EchartDataComb> getEchartDataCombBySGT(Integer sensorId,String today,String gsCode);
+	public List<EchartDataGroup> getEchartDataGroupBySGT(Integer sensorId,String beginTime,String endTime,String sensorName,String gsCode);
 
 	/**
 	 * 获取根据传感器id分组后的数据
