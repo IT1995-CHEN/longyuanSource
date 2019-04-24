@@ -11,6 +11,7 @@ public class OperationComb {
 	private String operationName;
 	private String operationInfo;
 	private String operationTime;
+	private String person;
 	
 	public Integer getOid() {
 		return oid;
@@ -48,13 +49,20 @@ public class OperationComb {
 	public void setOperationTime(String operationTime) {
 		this.operationTime = operationTime;
 	}
+	public String getPerson() {
+		return person;
+	}
+	public void setPerson(String person) {
+		this.person = person;
+	}
 	
 	@Override
 	public String toString() {
 		return "OperationComb [oid=" + oid + ", gsCode=" + gsCode
 				+ ", commodity=" + commodity + ", operationName="
 				+ operationName + ", operationInfo=" + operationInfo
-				+ ", operationTime=" + operationTime + "]";
+				+ ", operationTime=" + operationTime + ", person=" + person
+				+ "]";
 	}
 	
 		

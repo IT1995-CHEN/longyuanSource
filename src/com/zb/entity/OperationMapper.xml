@@ -7,7 +7,8 @@
 		<result column="gsCode" property="gsCode" />
 		<result column="operationName" property="operationName" />
 		<result column="operationInfo" property="operationInfo" />
-		<result column="operationTime" property="operationTime" />		
+		<result column="operationTime" property="operationTime" />	
+		<result column="person" property="person"/>	
 		<association property="commodity" javaType="com.zb.entity.Commodity" column="gsCode">
 			<id column="gsCode" property="gsCode" />
 			<result column="gsImg" property="gsImg" />
@@ -37,13 +38,14 @@
 		<result column="gsCode" property="gsCode" />
 		<result column="operationName" property="operationName" />
 		<result column="operationInfo" property="operationInfo" />
-		<result column="operationTime" property="operationTime" />		
+		<result column="operationTime" property="operationTime" />	
+		<result column="person" property="person"/>		
 	</resultMap>
 
 	<!-- 在表db_operation中增加数据 -->
 	<insert id="add">
-		insert into db_operation(gsCode,operationName,operationInfo,operationTime) 
-		value(#{gsCode},#{operationName},#{operationInfo},now())
+		insert into db_operation(gsCode,operationName,operationInfo,operationTime,person) 
+		value(#{gsCode},#{operationName},#{operationInfo},now(),#{person})
 	</insert>
 	
 	

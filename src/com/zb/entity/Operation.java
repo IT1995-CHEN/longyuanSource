@@ -10,6 +10,7 @@ public class Operation {
 	private String operationName;
 	private String operationInfo;
 	private String operationTime;
+	private String person;
 	
 	public Integer getOid() {
 		return oid;
@@ -41,13 +42,22 @@ public class Operation {
 	public void setOperationTime(String operationTime) {
 		this.operationTime = operationTime;
 	}
+	public String getPerson() {
+		return person;
+	}
+	public void setPerson(String person) {
+		this.person = person;
+	}
 	
 	@Override
 	public String toString() {
 		return "Operation [oid=" + oid + ", gsCode=" + gsCode
 				+ ", operationName=" + operationName + ", operationInfo="
-				+ operationInfo + ", operationTime=" + operationTime + "]";
+				+ operationInfo + ", operationTime=" + operationTime
+				+ ", person=" + person + "]";
 	}
+	
+	
 	
 	
 
