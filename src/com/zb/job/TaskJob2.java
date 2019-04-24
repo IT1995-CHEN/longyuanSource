@@ -17,7 +17,7 @@ public class TaskJob2 {
 	/**
 	 * 定时修改nowdata数据
 	 */                                                                                                                                                                                                                                                                                                                                                                        
-	//@Scheduled(cron="0 */5 * * * ?")
+	//@Scheduled(cron="0 */15 * * * ?")
 	public void jobUpdateNowData() {
 		List<NowData> nowDatas = nowDataBiz.getAllNowData();
 		double num = 0;

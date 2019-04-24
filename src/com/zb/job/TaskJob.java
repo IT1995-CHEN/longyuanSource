@@ -28,13 +28,13 @@ public class TaskJob {
 	/**
 	 * 定时生成、更新echartdata
 	 */
-	//@Scheduled(cron="0 */10 * * * ?")
+	//@Scheduled(cron="0 */20 * * * ?")
 	public void jobAddEchartData() { 
 	   int i =hisDataMapper.jobAddEchartData();
 	   System.out.println("#############################################"+i+"#######################################");
 	}
 	
-	//@Scheduled(cron="0 */4 * * * ?")
+	//@Scheduled(cron="0 */10 * * * ?")
 	public void jobAddOperation(){
 		List<Commodity> commodities = commodityMapper.getAll();
 		List<String> zhuList = new ArrayList<String>();

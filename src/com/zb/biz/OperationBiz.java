@@ -28,12 +28,13 @@ public interface OperationBiz {
 	 */
 	public List<OperationComb> getAllOperationComb(String gsCode,String operationName,String operationTime);
 	/**
-	 * 根据gsCode、操作名称、操作时间分页查询操作数据
+	 * 根据gsCode、操作名称、操作开始时间、操作结束时间分页查询操作数据
 	 * @param gsCode
 	 * @param operationName
-	 * @param operationTime
+	 * @param beginTime
+	 * @param endTime
 	 * @param page
 	 * @return
 	 */
-	public PageUtil<OperationComb> getAllPage(String gsCode,String operationName,String operationTime,PageUtil<OperationComb> page);
+	public PageUtil<OperationComb> getAllPage(String gsCode,String operationName,String beginTime,String endTime,PageUtil<OperationComb> page);
 }

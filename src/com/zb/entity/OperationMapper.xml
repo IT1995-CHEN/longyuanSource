@@ -62,9 +62,23 @@
 		</if>	
 		<if test="operationTime!=null and operationTime!=''">
 		  and DATE_FORMAT(dboa.operationTime,'%Y-%m-%d')=#{operationTime}
-		</if>	
+		</if>
 	</sql>
 	
+	<sql id="getOperationIf">
+		<if test="gsCode!=null and gsCode!=''">
+		  and dboa.gsCode=#{gsCode}
+		</if>
+		<if test="operationName!=null and operationName!=''">
+		  and dboa.operationName=#{operationName}
+		</if>	
+		<if test="beginTime!=null and beginTime!=''">
+		  and DATE_FORMAT(dboa.operationTime,'%Y-%m-%d')&gt;=#{beginTime}
+		</if>	
+		<if test="endTime!=null and endTime!=''">
+		  and DATE_FORMAT(dboa.operationTime,'%Y-%m-%d')&lt;=#{endTime}
+		</if>	
+	</sql>
 		
 	<!-- 根据getOperation查询所有数据 -->
 	<select id="getAllOperationComb" resultMap="OperationCombMap">
@@ -75,13 +89,13 @@
 	<!-- 分页查询数据条数 -->
 	<select id="getAllPageCount" resultType="int">
 		select count(*) from db_operation dboa inner join db_commodity dbcm on dboa.gsCode = dbcm.gsCode where 1=1
-	 	<include refid="getOperation"></include>
+	 	<include refid="getOperationIf"></include>
 	</select>
 	
 	<!-- 根据getOperation分页查询数据 -->
 	<select id="getAllPage" resultMap="OperationCombMap">
 		select * from db_operation dboa inner join db_commodity dbcm on dboa.gsCode = dbcm.gsCode where 1=1
-		<include refid="getOperation"></include>
+		<include refid="getOperationIf"></include>
 	  	limit #{index} ,#{size}
 	</select>
 	
