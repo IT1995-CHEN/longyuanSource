@@ -7,36 +7,11 @@
 		<result column="sensorId" property="sensorId" />
 		<result column="numData" property="numData" />
 		<result column="today" property="today" />
-		<association property="nowDataComb" javaType="com.zb.entity.NowDataComb" column="sensorId">
-<!-- 			<id column="sensorId" property="sensorId" />
-			<result column="gsCode" property="gsCode" />
-			<result column="sensorDeviceId" property="sensorDeviceId" />
-			<result column="area" property="area" /> -->
-			<result column="sensorName" property="sensorName" />
-<!-- 			<result column="sensorValue" property="sensorValue" /> -->
-				<association property="commodityLess" javaType="com.zb.entity.CommodityLess" column="gsCode">
-<!-- 				<id column="gsCode" property="gsCode" />
-				<result column="gsImg" property="gsImg" />
-				<result column="productImg" property="productImg" /> -->
-				<result column="productName" property="productName" />
-<!-- 				<result column="productDescription" property="productDescription" />
-				<result column="location" property="location" />
-				<result column="addressLongitude" property="addressLongitude" />
-				<result column="addressLatitude" property="addressLatitude" />
-				<result column="enterprise" property="enterprise" />
-				<result column="storageTem" property="storageTem" />
-				<result column="packageWay" property="packageWay" />
-				<result column="GrowthEnvir" property="GrowthEnvir" />
-				<result column="growthTime" property="growthTime" />
-				<result column="quality" property="quality" />
-				<result column="productKind" property="productKind" />
-				<result column="productionDate" property="productionDate" />
-				<result column="nutrientContent" property="nutrientContent" />
-				<result column="createTime" property="createTime" />
-				<result column="modifyTime" property="modifyTime" /> -->
-			</association>
-		</association>	
+		<result column="gsCode" property="gsCode" />
+		<result column="sensorName" property="sensorName" />
+		<result column="productName" property="productName" />
 	</resultMap>
+
 
 	<resultMap type="com.zb.entity.EchartData" id="EchartDataMap">
 		<id column="eid" property="eid" />
@@ -74,26 +49,28 @@
 	
 	<!-- 获得db_echartdata中所有数据信息，分页条件查询 -->
 	<sql id="getEchartData">
+		<where>
 		<if test="sensorId!=null and sensorId!=''">
-		  and e.sensorId=#{sensorId}
-		</if>
-		<if test="beginTime!=null and beginTime!=''">
-		  and e.today&gt;=#{beginTime}
-		</if>	
-		<if test="endTime!=null and endTime!=''">
-		  and e.today&lt;=#{endTime}
+		  e.sensorId=#{sensorId}
 		</if>
 		<if test="sensorName!=null and sensorName!=''">
 		  and n.sensorName=#{sensorName}
 		</if>	
 		<if test="gsCode!=null and gsCode!=''">
 		  and c.gsCode=#{gsCode}
+		</if>			
+		<if test="beginTime!=null and beginTime!=''">
+		  and e.today&gt;=#{beginTime}
 		</if>	
+		<if test="endTime!=null and endTime!=''">
+		  and e.today&lt;=#{endTime}
+		</if>
+		</where>
 	</sql>
 	
 	<select id="getEchartDataCombBySGT" resultMap="EchartDataCombMap">
-		select * from db_echartdata e,db_nowdata n,db_commodity c
-		where e.sensorId = n.sensorId and n.gsCode = c.gsCode		
+		select e.*,n.sensorName,c.gsCode,c.productName from db_echartdata e left join db_nowdata n on e.sensorId = n.sensorId 
+		left join db_commodity c on n.gsCode = c.gsCode 
 		<include refid="getEchartData"></include>
 
 	</select>

@@ -77,6 +77,7 @@ public class OperationC {
 	@RequestMapping("/getAllOperationCombs")
 	public PageUtil<OperationComb> getAllOperationCombs(String gsCode,String operationName,String beginTime,String endTime,
 			Integer index,Integer size){
+		long startTimeN = System.currentTimeMillis(); 
 		PageUtil<OperationComb> page = new PageUtil<OperationComb>();
 		if(index!=null&&!(index.equals(""))){
 		page.setIndex(index);
@@ -85,6 +86,8 @@ public class OperationC {
 			page.setSize(size);
 		}		
 		PageUtil<OperationComb> pageUtil=operationBiz.getAllPage(gsCode, operationName, beginTime, endTime, page);
+		long endTimeN = System.currentTimeMillis();
+		System.out.println("getAllOperationCombs：" + (endTimeN - startTimeN)/1000 + "s");    //输出程序运行时间
 		return pageUtil;
 		
 	}

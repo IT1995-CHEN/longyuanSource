@@ -51,7 +51,10 @@ public class EchartDataC {
 	@ResponseBody
 	@RequestMapping("/getEchartDataGroupBySGT")
 	public List<EchartDataGroup> getEchartDataCombBySGT(Integer sensorId,String beginTime,String endTime,String sensorName,String gsCode){
+		long startTimeN = System.currentTimeMillis(); 
 		List<EchartDataGroup> echartDataGroups = echartDataBiz.getEchartDataGroupBySGT(sensorId, beginTime, endTime, sensorName, gsCode);
+		long endTimeN = System.currentTimeMillis();
+		System.out.println("getEchartDataCombBySGT程序运行时间：" + (endTimeN - startTimeN)/1000 + "s");    //输出程序运行时间
 		return echartDataGroups;
 	}
 	/**

@@ -57,40 +57,39 @@ public class EchartDataBizImpl implements EchartDataBiz{
 		List<EchartDataComb> echartDataCombs = echartDataMapper.getEchartDataCombBySGT(sensorId, beginTime, endTime, sensorName, gsCode);
 		List<EchartDataGroup> echartDataGroupList = new ArrayList<EchartDataGroup>();
 
+		System.out.println();
+		for (EchartDataComb e : echartDataCombs) {
+			System.out.println(e);
+		}
+		System.out.println();
+		
 		if(echartDataCombs.size()>0){
 			for (int i=0;i<echartDataCombs.size();i++) {
 				EchartDataGroup echartDataGroup = new EchartDataGroup();
-				List<EchartData> echartDatas=echartDataMapper.getEchartDataBySensorId(echartDataCombs.get(i).getSensorId(),beginTime,endTime);
 				echartDataGroup.setSensorId(echartDataCombs.get(i).getSensorId());
-				echartDataGroup.setSensorName(echartDataCombs.get(i).getNowDataComb().getSensorName());
-				echartDataGroup.setProductName(echartDataCombs.get(i).getNowDataComb().getCommodityLess().getProductName());
+				echartDataGroup.setSensorName(echartDataCombs.get(i).getSensorName());
+				echartDataGroup.setProductName(echartDataCombs.get(i).getProductName());
+				List<EchartData> echartDatas=echartDataMapper.getEchartDataBySensorId(echartDataCombs.get(i).getSensorId(),null,null);
 				List<Double> numDataList = new ArrayList<Double>();
 				List<String> todayList = new ArrayList<String>();
-				
 				for (int j=0;j<echartDatas.size();j++) {
 					numDataList.add(Double.valueOf(echartDatas.get(j).getNumData()));
 					todayList.add(echartDatas.get(j).getToday());
-					System.out.println();
-					System.out.println(Double.valueOf(echartDatas.get(j).getNumData()));
-					System.out.println(echartDatas.get(j).getToday());
-					System.out.println();
 				}
 				
 				echartDataGroup.setNumDataList(numDataList);
 				echartDataGroup.setTodayList(todayList);
-				System.out.println("("+echartDataGroup+")");
 				echartDataGroupList.add(echartDataGroup);
-			}
 			
+			}		
+
 			List<EchartDataGroup> echartDataGroups = new ArrayList<EchartDataGroup>();
 			for (int i=0;i<echartDataGroupList.size();i++) {
 				if(!echartDataGroups.contains(echartDataGroupList.get(i))){
 					echartDataGroups.add(echartDataGroupList.get(i));
 				}
-			}
-			
-			return echartDataGroups;
-			
+			}		
+			return echartDataGroups;		
 		}
 				
 		return null;

@@ -3,9 +3,11 @@ package com.zb.entity;
 public class EchartDataComb {
 	private Integer eid;
 	private Integer sensorId;
-	private NowDataComb nowDataComb;
 	private String numData;
 	private String today;
+	private String sensorName;
+	private String gsCode;
+	private String productName;
 	
 	public Integer getEid() {
 		return eid;
@@ -19,12 +21,7 @@ public class EchartDataComb {
 	public void setSensorId(Integer sensorId) {
 		this.sensorId = sensorId;
 	}
-	public NowDataComb getNowDataComb() {
-		return nowDataComb;
-	}
-	public void setNowDataComb(NowDataComb nowDataComb) {
-		this.nowDataComb = nowDataComb;
-	}
+	
 	public String getNumData() {
 		return numData;
 	}
@@ -37,12 +34,32 @@ public class EchartDataComb {
 	public void setToday(String today) {
 		this.today = today;
 	}
-	
+	public String getSensorName() {
+		return sensorName;
+	}
+	public void setSensorName(String sensorName) {
+		this.sensorName = sensorName;
+	}
+	public String getGsCode() {
+		return gsCode;
+	}
+	public void setGsCode(String gsCode) {
+		this.gsCode = gsCode;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 	@Override
 	public String toString() {
 		return "EchartDataComb [eid=" + eid + ", sensorId=" + sensorId
-				+ ", nowDataComb=" + nowDataComb + ", numData=" + numData
-				+ ", today=" + today + "]";
+				+ ", numData=" + numData + ", today=" + today + ", sensorName="
+				+ sensorName + ", gsCode=" + gsCode + ", productName="
+				+ productName + "]";
 	}
-		
+	
+	
+
 }
