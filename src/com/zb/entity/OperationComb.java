@@ -7,7 +7,7 @@ package com.zb.entity;
 public class OperationComb {
 	private Integer oid;
 	private String gsCode;
-	private Commodity commodity;
+	/*private Commodity commodity;*/
 	private String operationName;
 	private String operationInfo;
 	private String operationTime;
@@ -25,12 +25,12 @@ public class OperationComb {
 	public void setGsCode(String gsCode) {
 		this.gsCode = gsCode;
 	}
-	public Commodity getCommodity() {
-		return commodity;
-	}
-	public void setCommodity(Commodity commodity) {
-		this.commodity = commodity;
-	}
+//	public Commodity getCommodity() {
+//		return commodity;
+//	}
+//	public void setCommodity(Commodity commodity) {
+//		this.commodity = commodity;
+//	}
 	public String getOperationName() {
 		return operationName;
 	}
@@ -59,7 +59,7 @@ public class OperationComb {
 	@Override
 	public String toString() {
 		return "OperationComb [oid=" + oid + ", gsCode=" + gsCode
-				+ ", commodity=" + commodity + ", operationName="
+				+ ", commodity="  + ", operationName="
 				+ operationName + ", operationInfo=" + operationInfo
 				+ ", operationTime=" + operationTime + ", person=" + person
 				+ "]";

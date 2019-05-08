@@ -9,7 +9,7 @@
 		<result column="operationInfo" property="operationInfo" />
 		<result column="operationTime" property="operationTime" />	
 		<result column="person" property="person"/>	
-		<association property="commodity" javaType="com.zb.entity.Commodity" column="gsCode">
+		<!-- <association property="commodity" javaType="com.zb.entity.Commodity" column="gsCode">
 			<id column="gsCode" property="gsCode" />
 			<result column="gsImg" property="gsImg" />
 			<result column="productImg" property="productImg" />
@@ -29,7 +29,7 @@
 			<result column="nutrientContent" property="nutrientContent" />
 			<result column="createTime" property="createTime" />
 			<result column="modifyTime" property="modifyTime" />
-		</association>
+		</association> -->
 	</resultMap>
 	
 
