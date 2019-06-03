@@ -5,7 +5,6 @@ import java.util.List;
 import com.zb.entity.Commodity;
 import com.zb.util.PageUtil;
 
-
 public interface CommodityBiz {
 		
 	/**
