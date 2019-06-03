@@ -26,7 +26,7 @@ public interface OperationBiz {
 	 * @param operationTime
 	 * @return
 	 */
-	public List<OperationComb> getAllOperationComb(String gsCode,String operationName,String operationTime);
+	public List<OperationComb> getAllOperationComb(String gsCode,String operationName,String operationTime,String fedding,String weight,String drinkWater,String bodyTemperature,String temperature,String light,String dust,String vulcanizationConcentrationSensor,String nitrogenConcentration,String feeder,String fan,String videoSwitch,String wetCurtainFilm,String farmOperation,String operator);
 	/**
 	 * 根据gsCode、操作名称、操作开始时间、操作结束时间分页查询操作数据
 	 * @param gsCode

@@ -59,8 +59,8 @@ public class OperationC {
 	 */
 	@ResponseBody
 	@RequestMapping("/getAllOperationComb")
-	public List<OperationComb> getAllOperationComb(String gsCode,String operationName,String operationTime){
-		List<OperationComb> operationCombs = operationBiz.getAllOperationComb(gsCode, operationName, operationTime);
+	public List<OperationComb> getAllOperationComb(String gsCode,String operationName,String operationTime,String fedding,String weight,String drinkWater,String bodyTemperature,String temperature,String light,String dust,String vulcanizationConcentrationSensor,String nitrogenConcentration,String feeder,String fan,String videoSwitch,String wetCurtainFilm,String farmOperation,String operator){
+		List<OperationComb> operationCombs = operationBiz.getAllOperationComb(gsCode, operationName, operationTime,fedding,weight,drinkWater,bodyTemperature,temperature,light,dust,vulcanizationConcentrationSensor,nitrogenConcentration,feeder,fan,videoSwitch,wetCurtainFilm,farmOperation,operator);
 		return operationCombs;
 	}
 	

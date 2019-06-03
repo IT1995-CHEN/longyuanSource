@@ -29,7 +29,7 @@ public interface OperationMapper {
 	 * @param operationTime
 	 * @return
 	 */
-	public List<OperationComb> getAllOperationComb(@Param("gsCode")String gsCode,@Param("operationName")String operationName,@Param("operationTime")String operationTime);
+	public List<OperationComb> getAllOperationComb(@Param("gsCode")String gsCode,@Param("operationName")String operationName,@Param("operationTime")String operationTime,@Param("fedding")String fedding,@Param("weight")String weight,@Param("drinkWater")String drinkWater,@Param("bodyTemperature")String bodyTemperature,@Param("temperature")String temperature,@Param("light")String light,@Param("dust")String dust,@Param("vulcanizationConcentrationSensor")String vulcanizationConcentrationSensor,@Param("nitrogenConcentration")String nitrogenConcentration,@Param("feeder")String feeder,@Param("fan")String fan,@Param("videoSwitch")String videoSwitch,@Param("wetCurtainFilm")String wetCurtainFilm,@Param("farmOperation")String farmOperation,@Param("operator")String operator);
 	/**
 	 * 根据gsCode编码、操作名字 、操作时间查询的记录行数
 	 * @param gsCode

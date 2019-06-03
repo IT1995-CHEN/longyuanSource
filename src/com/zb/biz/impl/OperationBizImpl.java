@@ -42,8 +42,8 @@ public class OperationBizImpl implements OperationBiz {
 	 * @param operationTime
 	 * @return
 	 */
-	public List<OperationComb> getAllOperationComb(String gsCode,String operationName,String operationTime){
-		List<OperationComb> operationCombs = operationMapper.getAllOperationComb(gsCode, operationName, operationTime);
+	public List<OperationComb> getAllOperationComb(String gsCode,String operationName,String operationTime,String fedding,String weight,String drinkWater,String bodyTemperature,String temperature,String light,String dust,String vulcanizationConcentrationSensor,String nitrogenConcentration,String feeder,String fan,String videoSwitch,String wetCurtainFilm,String farmOperation,String operator){
+		List<OperationComb> operationCombs = operationMapper.getAllOperationComb(gsCode, operationName, operationTime, operator, farmOperation, wetCurtainFilm, videoSwitch, fan, feeder, nitrogenConcentration, vulcanizationConcentrationSensor, dust, light, temperature, bodyTemperature, drinkWater, weight, fedding);
 		return operationCombs;
 	}
 	/**
@@ -62,4 +62,6 @@ public class OperationBizImpl implements OperationBiz {
 		page.setCount(count);
 		return page;
 	}
+	
+
 }
